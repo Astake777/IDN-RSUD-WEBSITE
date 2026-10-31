@@ -15,11 +15,9 @@ export function CrewHero() {
           fetchPriority="high"
           className="mx-auto block aspect-[3/2] max-h-[calc(100svh-12rem)] w-full object-contain"
         />
+        {/* The photo carries its own script caption, so the heading is for screen readers only. */}
         <figcaption>
-          <h1
-            id="crew-title"
-            className="mt-6 text-center text-xl font-extrabold tracking-wide text-white sm:text-2xl lg:text-3xl"
-          >
+          <h1 id="crew-title" className="sr-only">
             {l(s.crewTitle)}
           </h1>
         </figcaption>

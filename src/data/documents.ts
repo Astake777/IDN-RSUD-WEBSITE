@@ -15,7 +15,20 @@ import type { DocumentCategory, IcuDocument } from './types'
     sizeLabel: '240 KB',
   },
 */
-export const documents: IcuDocument[] = []
+export const documents: IcuDocument[] = [
+  {
+    id: 'pp-anestesiologi-terapi-intensif-2026',
+    title: 'Pedoman Pelayanan Instalasi Anestesiologi dan Terapi Intensif',
+    category: 'pedoman-pelayanan',
+    description:
+      'Pedoman pelayanan Instalasi Anestesiologi dan Terapi Intensif RSUD dr. Loekmono Hadi Kabupaten Kudus tahun 2026.',
+    filePath: '/documents/pedoman-pelayanan/pedoman-pelayanan-instalasi-anestesiologi-dan-terapi-intensif-2026.pdf',
+    fileName: 'pedoman-pelayanan-instalasi-anestesiologi-dan-terapi-intensif-2026.pdf',
+    available: true,
+    updatedAt: '2026',
+    sizeLabel: '683 KB · 71 halaman',
+  },
+]
 
 export function documentsByCategory(category: DocumentCategory): IcuDocument[] {
   return documents.filter((d) => d.category === category)

@@ -19,11 +19,6 @@ export const s = {
     en: 'Watch education videos on the RSLH TV YouTube channel',
     jv: 'Mirsani video edukasi wonten ing kanal YouTube RSLH TV',
   },
-  videoChannelHint: {
-    id: 'Tautan ini membuka kanal YouTube RSLH TV milik RSUD dr. Loekmono Hadi Kudus.',
-    en: 'This link opens the RSLH TV YouTube channel of RSUD dr. Loekmono Hadi Kudus.',
-    jv: 'Tautan menika mbikak kanal YouTube RSLH TV kagunganipun RSUD dr. Loekmono Hadi Kudus.',
-  },
   videoTopicHint: {
     id: 'Tautan ini membuka video edukasi topik ini di YouTube.',
     en: 'This link opens the education video for this topic on YouTube.',

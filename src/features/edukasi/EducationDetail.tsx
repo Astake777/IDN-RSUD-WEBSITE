@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Clock, Info, MessageCircleQuestion, Phone, Play } from 'lucide-react'
 import { YoutubeIcon } from '../../components/icons/BrandIcons'
-import { contact, social } from '../../config/site'
+import { contact } from '../../config/site'
 import { educationTopics, icuVisitSchedule, VISIT_SCHEDULE_SECTION } from '../../data/education'
 import type { EducationSection, EducationTopic } from '../../data/types'
 import { useLang } from '../../i18n/LanguageContext'
@@ -139,7 +139,7 @@ export function EducationDetail({ slug }: { slug: string }) {
         {/* Desktop: stays in view beside the text. Mobile: stacks after the article. */}
         <aside className="min-w-0">
           <div className="space-y-6 lg:sticky lg:top-[136px]">
-            <VideoCard topic={topic} />
+            {topic.videoUrl && <VideoCard topic={topic} url={topic.videoUrl} />}
 
             {toc.length > 1 && (
               <nav aria-label={l(s.toc)} className="hidden rounded-card border border-line bg-white p-5 lg:block">
@@ -263,10 +263,9 @@ function youtubeId(url: string) {
   }
 }
 
-function VideoCard({ topic }: { topic: EducationTopic }) {
+function VideoCard({ topic, url }: { topic: EducationTopic; url: string }) {
   const { t, l } = useLang()
-  const url = topic.videoUrl ?? social.youtube.url
-  const id = topic.videoUrl ? youtubeId(topic.videoUrl) : null
+  const id = youtubeId(url)
   return (
     <a
       href={url}
@@ -297,7 +296,7 @@ function VideoCard({ topic }: { topic: EducationTopic }) {
           {l(s.videoCta)}
         </span>
         <span className="text-sm text-ink-soft">
-          {l(topic.videoUrl ? s.videoTopicHint : s.videoChannelHint)}
+          {l(s.videoTopicHint)}
           <span className="sr-only"> {t('opensNewTab')}</span>
         </span>
       </span>
