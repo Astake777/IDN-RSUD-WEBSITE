@@ -34,8 +34,6 @@ export function SiteSearch({ variant, onNavigate }: SiteSearchProps) {
   const ready = query.trim().length >= 2
   const results = useMemo(() => (ready ? search(query, lang) : []), [query, lang, ready])
   const expanded = open && ready
-  // Desktop field sits on the green navbar; the mobile one lives in the white drawer.
-  const onGreen = variant === 'desktop'
   const base = `site-search-${variant}`
   const listId = `${base}-list`
   const optId = (i: number) => `${base}-opt-${i}`
@@ -99,7 +97,7 @@ export function SiteSearch({ variant, onNavigate }: SiteSearchProps) {
 
   return (
     <div ref={root} className="relative">
-      <Search className={`pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 ${onGreen ? 'text-white' : 'text-ink-soft'}`} aria-hidden />
+      <Search className={`pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-ink-soft`} aria-hidden />
       <input
         type="search"
         id={base}
@@ -119,11 +117,7 @@ export function SiteSearch({ variant, onNavigate }: SiteSearchProps) {
         }}
         onFocus={() => setOpen(true)}
         onKeyDown={onKeyDown}
-        className={`h-11 w-full rounded-md border pl-9 pr-3 text-sm ${
-          onGreen
-            ? 'border-white/40 bg-black/15 text-white placeholder:text-white focus:bg-black/25'
-            : 'border-line bg-brand-50 placeholder:text-ink-soft'
-        }`}
+        className={`h-11 w-full rounded-md border pl-9 pr-3 text-sm border-line bg-brand-50 placeholder:text-ink-soft`}
       />
       <p className="sr-only" aria-live="polite">
         {expanded ? l(s.count).replace('{n}', String(results.length)) : ''}

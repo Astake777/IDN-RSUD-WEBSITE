@@ -13,27 +13,24 @@ export function MainNavbar() {
   const close = useCallback(() => setOpen(false), [])
 
   return (
-    <div className="border-b border-white/10 bg-brand-700">
-      <div className="container-wide flex h-16 items-center justify-between gap-4 lg:h-[72px]">
+    <div className="border-b border-line bg-white shadow-[0_1px_0_rgb(22_38_26/0.04)]">
+      <div className="container-wide flex h-16 items-center gap-4 lg:h-[72px]">
         <Link to="/" aria-label={t('homeLink')} className="shrink-0 rounded">
-          {/* Original colour logo on a white plate; its dark lettering would be unreadable on the green bar. */}
-          <span className="block rounded-control bg-white px-2.5 py-1">
-            <img src="/images/logo.webp" alt="" width={640} height={255} className="h-8 w-auto lg:h-11" />
-          </span>
+          <img src="/images/logo.webp" alt="" width={640} height={255} className="h-10 w-auto lg:h-12" />
         </Link>
 
-        <nav aria-label={t('mainNav')} className="hidden flex-1 justify-center xl:flex">
-          <ul className="flex items-center gap-1 2xl:gap-4">
+        <nav aria-label={t('mainNav')} className="ml-6 hidden flex-1 xl:flex 2xl:ml-10">
+          <ul className="flex items-center gap-0.5 2xl:gap-2">
             {navItems.map((item) => (
               <li key={item.to}>
                 <NavLink
                   to={item.to}
                   end={item.to === '/'}
                   className={({ isActive }) =>
-                    `relative inline-flex min-h-11 items-center rounded-md px-3 text-base font-semibold 2xl:px-4 2xl:text-[1.0625rem] transition-colors ${
+                    `relative inline-flex min-h-11 items-center whitespace-nowrap rounded-md px-3 text-base font-bold 2xl:px-4 2xl:text-[1.0625rem] transition-colors ${
                       isActive
-                        ? 'text-white after:absolute after:inset-x-3 after:-bottom-[13px] after:h-[3px] after:rounded-full after:bg-accent'
-                        : 'text-white/85 hover:bg-white/10 hover:text-white'
+                        ? 'text-brand-700 after:absolute after:inset-x-3 after:-bottom-[13px] after:h-[3px] after:rounded-full after:bg-accent'
+                        : 'text-ink hover:bg-brand-50 hover:text-brand-900'
                     }`
                   }
                 >
@@ -44,8 +41,8 @@ export function MainNavbar() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2">
-          <div className="hidden w-56 md:block xl:w-48 2xl:w-72">
+        <div className="ml-auto flex items-center gap-2">
+          <div className="hidden w-56 md:block xl:w-44 2xl:w-60">
             <SiteSearch variant="desktop" />
           </div>
           <VoiceToggle />
@@ -53,7 +50,7 @@ export function MainNavbar() {
             href={registrationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden min-h-11 shrink-0 items-center gap-1 rounded-md bg-white px-4 font-bold text-brand-900 hover:bg-brand-50 xl:inline-flex"
+            className="hidden min-h-12 shrink-0 items-center gap-1 rounded-control bg-brand-700 px-6 font-bold text-white hover:bg-brand-900 xl:inline-flex"
           >
             {t('registerOnline')}
             <ChevronRight className="size-4" aria-hidden />
@@ -64,7 +61,7 @@ export function MainNavbar() {
             onClick={() => setOpen(true)}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/40 px-3 font-semibold text-white hover:bg-white/10 xl:hidden"
+            className="inline-flex min-h-11 items-center gap-2 rounded-md border border-line px-3 font-semibold text-ink hover:bg-brand-50 xl:hidden"
           >
             <Menu className="size-5" aria-hidden />
             {t('menu')}

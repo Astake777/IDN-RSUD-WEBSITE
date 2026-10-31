@@ -15,10 +15,10 @@ export function VoiceToggle() {
       onClick={() => setEnabled(!enabled)}
       aria-pressed={enabled}
       aria-label={l(enabled ? voiceStrings.ariaOn : voiceStrings.ariaOff)}
-      className="relative inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-md border border-white/40 px-3 font-semibold text-white hover:bg-white/10"
+      className="relative inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-md border border-line px-3 font-semibold text-ink hover:bg-brand-50"
     >
       <Icon className="size-5" aria-hidden />
-      <span className="hidden sm:inline">{l(voiceStrings.label)}</span>
+      <span className="hidden sm:inline xl:hidden">{l(voiceStrings.label)}</span>
       {speaking && (
         <span
           aria-hidden
