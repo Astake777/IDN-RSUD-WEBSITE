@@ -14,8 +14,9 @@ export const contact = {
   whatsappHref: 'https://wa.me/6281575531104',
   address:
     'Jl. Dr. Lukmono Hadi No.19, Cobowo, Ploso, Kecamatan Jati, Kabupaten Kudus, Jawa Tengah 59348',
-  // Search link, not an official place ID; swap for the hospital's share link when available.
-  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=RSUD+dr.+Loekmono+Hadi+Kudus',
+  mapsUrl: 'https://maps.app.goo.gl/C244HVRfNJyuhKY56',
+  // Keyless embed centred on the hospital's coordinates (-6.8189271, 110.8367072).
+  mapsEmbedUrl: 'https://www.google.com/maps?q=-6.8189271,110.8367072&z=17&output=embed',
   // No official email in the source files; footer hides the row while this is empty.
   email: '',
 } as const

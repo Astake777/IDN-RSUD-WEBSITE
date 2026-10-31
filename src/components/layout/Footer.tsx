@@ -1,4 +1,4 @@
-import { ArrowUp, Clock, Mail, MapPin, Phone } from 'lucide-react'
+import { ArrowUp, ArrowUpRight, Clock, Mail, MapPin, Phone } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { contact, serviceHours, social } from '../../config/site'
 import { useLang } from '../../i18n/LanguageContext'
@@ -117,6 +117,24 @@ export function Footer() {
               </a>
             </ContactRow>
           </ul>
+          <iframe
+            src={contact.mapsEmbedUrl}
+            title={t('mapTitle')}
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
+            className="mt-5 block h-[180px] w-full rounded-[12px] border border-footer-line bg-footer-chip sm:h-[200px]"
+          />
+          <a
+            href={contact.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 inline-flex min-h-11 items-center gap-1.5 font-semibold text-white hover:underline"
+          >
+            {t('viewOnMaps')}
+            <ArrowUpRight className="size-4" aria-hidden />
+            <span className="sr-only"> {t('opensNewTab')}</span>
+          </a>
         </div>
       </div>
 
