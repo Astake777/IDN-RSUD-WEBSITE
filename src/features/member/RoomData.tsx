@@ -1,11 +1,10 @@
-import { BriefcaseMedical, ClipboardList, HeartPulse, Stethoscope, UserRound, type LucideIcon } from 'lucide-react'
+import { ClipboardList, HeartPulse, Stethoscope, UserRound, type LucideIcon } from 'lucide-react'
 import { SectionHeading } from '../../components/ui/SectionHeading'
 import { useLang } from '../../i18n/LanguageContext'
 import { roomData, type RoomCategory } from '../../data/organization'
 import { people, s } from './strings'
 
 const icons: Record<RoomCategory['id'], LucideIcon> = {
-  konsultan: BriefcaseMedical,
   spesialis: Stethoscope,
   umum: UserRound,
   perawat: HeartPulse,
@@ -52,6 +51,7 @@ export function RoomData() {
                   </span>
                   <div className="min-w-0">
                     <p className="font-bold text-ink">{l(c.label)}</p>
+                    {c.role && <p className="text-sm text-ink-soft">{l(c.role)}</p>}
                     <p className={c.count === undefined ? 'text-sm text-ink-soft' : 'text-lg font-extrabold text-danger'}>
                       {c.count === undefined ? l(s.noCount) : l(people(c.count))}
                     </p>
