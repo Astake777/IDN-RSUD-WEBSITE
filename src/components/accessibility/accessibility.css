@@ -91,11 +91,3 @@ html[data-a11y-dark] #main picture img {
     transition: filter 0.2s ease;
   }
 }
-
-/* The page header band is already dark green; flip it back so dark mode keeps it dark. */
-html[data-a11y-dark] #main > header {
-  filter: invert(1) hue-rotate(180deg);
-}
-html[data-a11y-dark] #main > header img {
-  filter: none;
-}

@@ -15,35 +15,25 @@ interface Props {
   crumbs: Crumb[]
   lead?: string
   titleId?: string
-  image?: string
 }
 
-// Overlay stays within brand-900 at 86% or more so white text keeps at least 6.6:1 over the brightest part of the photo.
-const overlay =
-  'linear-gradient(100deg, rgb(13 58 7 / 0.97) 0%, rgb(20 80 10 / 0.92) 55%, rgb(20 80 10 / 0.86) 100%)'
-
-export function PageHeader({ title, crumbs, lead, titleId, image = '/images/gedung-rs.webp' }: Props) {
+// Plain white header as in the original page mockups: title, optional lead, breadcrumb.
+export function PageHeader({ title, crumbs, lead, titleId }: Props) {
   const { t } = useLang()
   const trail: Crumb[] = [{ label: t('navHome'), to: '/' }, ...crumbs]
 
   return (
-    <header className="relative isolate overflow-hidden bg-brand-900 text-white">
-      <img
-        src={image}
-        alt=""
-        aria-hidden
-        decoding="async"
-        className="absolute inset-0 -z-10 size-full object-cover"
-      />
-      <div className="absolute inset-0 -z-10" style={{ backgroundImage: overlay }} aria-hidden />
-
-      <div className="container-site py-12 sm:py-16 lg:py-[88px]">
-        <h1 id={titleId} className="max-w-4xl text-[length:calc(1.75rem*var(--a11y-fs,1))] font-bold leading-tight sm:text-[length:calc(1.875rem*var(--a11y-fs,1))] lg:text-[length:calc(2rem*var(--a11y-fs,1))]">
+    <header className="border-b border-line bg-white">
+      <div className="container-site pb-8 pt-10 sm:pb-10 sm:pt-12">
+        <h1
+          id={titleId}
+          className="max-w-4xl text-[length:calc(1.75rem*var(--a11y-fs,1))] font-bold leading-tight text-ink sm:text-[length:calc(1.875rem*var(--a11y-fs,1))] lg:text-[length:calc(2rem*var(--a11y-fs,1))]"
+        >
           {title}
         </h1>
-        {lead && <p className="mt-3 max-w-3xl text-base text-white/85 sm:text-lg">{lead}</p>}
+        {lead && <p className="mt-3 max-w-3xl text-base text-ink-soft sm:text-lg">{lead}</p>}
 
-        <nav aria-label={t('breadcrumb')} className="mt-4">
+        <nav aria-label={t('breadcrumb')} className="mt-3">
           <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[length:calc(0.9375rem*var(--a11y-fs,1))]">
             {trail.map((c, i) => {
               const last = i === trail.length - 1
@@ -51,13 +41,13 @@ export function PageHeader({ title, crumbs, lead, titleId, image = '/images/gedu
                 <Fragment key={`${i}-${c.label}`}>
                   <li className="flex items-center">
                     {last || !c.to ? (
-                      <span aria-current={last ? 'page' : undefined} className="font-bold text-white">
+                      <span aria-current={last ? 'page' : undefined} className="font-bold text-ink">
                         {c.label}
                       </span>
                     ) : (
                       <Link
                         to={c.to}
-                        className="inline-flex min-h-11 items-center text-white/85 hover:text-white hover:underline"
+                        className="inline-flex min-h-11 items-center text-ink-soft hover:text-brand-900 hover:underline"
                       >
                         {c.label}
                       </Link>
@@ -65,7 +55,7 @@ export function PageHeader({ title, crumbs, lead, titleId, image = '/images/gedu
                   </li>
                   {!last && (
                     <li aria-hidden className="flex items-center">
-                      <ChevronRight className="size-4 text-white/60" />
+                      <ChevronRight className="size-4 text-ink-soft" />
                     </li>
                   )}
                 </Fragment>
