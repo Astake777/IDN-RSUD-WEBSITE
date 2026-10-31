@@ -16,7 +16,7 @@ export function DocumentSidebar({ active, counts, onSelect }: Props) {
       aria-label={l(s.categories)}
       className="rounded-card border border-line bg-white p-2"
     >
-      <ul className="grid grid-cols-2 gap-2 lg:grid-cols-1">
+      <ul className="grid grid-cols-1 gap-1 min-[480px]:grid-cols-2 min-[480px]:gap-2 lg:grid-cols-1">
         {documentCategories.map(({ slug, label, icon: Icon }) => {
           const isActive = slug === active
           return (

@@ -16,7 +16,10 @@ export function MainNavbar() {
     <div className="border-b border-white/10 bg-brand-700">
       <div className="container-wide flex h-16 items-center justify-between gap-4 lg:h-[72px]">
         <Link to="/" aria-label={t('homeLink')} className="shrink-0 rounded">
-          <img src="/images/logo.webp" alt="" width={640} height={255} className="h-10 w-auto brightness-0 invert lg:h-14" />
+          {/* Original colour logo on a white plate; its dark lettering would be unreadable on the green bar. */}
+          <span className="block rounded-control bg-white px-2.5 py-1">
+            <img src="/images/logo.webp" alt="" width={640} height={255} className="h-8 w-auto lg:h-11" />
+          </span>
         </Link>
 
         <nav aria-label={t('mainNav')} className="hidden flex-1 justify-center xl:flex">
