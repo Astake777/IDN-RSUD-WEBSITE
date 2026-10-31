@@ -40,7 +40,7 @@ export function getIndex(): SearchEntry[] {
     id: `page-${n.to}`,
     type: 'page',
     title: ui[n.key],
-    text: { id: '', en: '' },
+    text: { id: '', en: '', jv: '' },
     url: n.to,
   }))
   const p = seru.profil
@@ -60,7 +60,7 @@ export function getIndex(): SearchEntry[] {
       id: `fasilitas-${f.slug}`,
       type: 'fasilitas',
       title: f.name,
-      text: join([f.description], [[f.functions?.id], [f.functions?.en]]),
+      text: join([f.description], [[f.functions?.id], [f.functions?.en], [f.functions?.jv ?? f.functions?.id]]),
       url: `/fasilitas#fasilitas-${f.slug}`,
     })
   }
@@ -68,18 +68,20 @@ export function getIndex(): SearchEntry[] {
     const parts: Localized[] = [e.summary]
     const idLists: (string[] | undefined)[] = []
     const enLists: (string[] | undefined)[] = []
+    const jvLists: (string[] | undefined)[] = []
     for (const s of e.sections) {
       parts.push(s.heading, ...(s.paragraphs ?? []))
       if (s.note) parts.push(s.note)
       idLists.push(s.points?.id)
       enLists.push(s.points?.en)
+      jvLists.push(s.points?.jv ?? s.points?.id)
     }
     parts.push(...(e.importantMessage ?? []))
     entries.push({
       id: `edukasi-${e.slug}`,
       type: 'edukasi',
       title: e.title,
-      text: join(parts, [idLists, enLists]),
+      text: join(parts, [idLists, enLists, jvLists]),
       url: `/edukasi/${e.slug}`,
     })
   }
@@ -97,8 +99,8 @@ export function getIndex(): SearchEntry[] {
     entries.push({
       id: `doc-${d.id}`,
       type: 'berkas',
-      title: { id: d.title, en: d.title },
-      text: { id: d.description, en: d.description },
+      title: { id: d.title, en: d.title, jv: d.title },
+      text: { id: d.description, en: d.description, jv: d.description },
       url: `/berkas-icu?kategori=${d.category}`,
     })
   }
