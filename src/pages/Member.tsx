@@ -1,4 +1,13 @@
-// TODO(agent): build this page.
+import { CrewHero } from '../features/member/CrewHero'
+import { OrgChart } from '../features/member/OrgChart'
+import { RoomData } from '../features/member/RoomData'
+
 export default function Member() {
-  return <div className="container-site py-16"><h1 className="h-section">Member</h1></div>
+  return (
+    <>
+      <CrewHero />
+      <OrgChart />
+      <RoomData />
+    </>
+  )
 }

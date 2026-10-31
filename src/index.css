@@ -27,8 +27,14 @@
 
 @layer base {
   html {
-    scroll-padding-top: 88px;
+    /* Matches the sticky header: 40px utility bar + 64px navbar (72px from lg). */
+    scroll-padding-top: 104px;
     -webkit-text-size-adjust: 100%;
+  }
+  @media (min-width: 64rem) {
+    html {
+      scroll-padding-top: 112px;
+    }
   }
   @media (prefers-reduced-motion: no-preference) {
     html {

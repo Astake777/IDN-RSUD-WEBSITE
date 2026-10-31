@@ -1,7 +1,7 @@
 import { social } from '../../config/site'
 import { useLang } from '../../i18n/LanguageContext'
-import type { Lang } from '../../data/types'
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from '../icons/BrandIcons'
+import { LanguageMenu } from './LanguageMenu'
 
 const links = [
   { ...social.instagram, Icon: InstagramIcon, name: 'Instagram' },
@@ -10,7 +10,7 @@ const links = [
 ]
 
 export function UtilityBar() {
-  const { t, lang, setLang } = useLang()
+  const { t } = useLang()
 
   return (
     <div className="bg-brand-900 text-white text-[0.8125rem]">
@@ -38,22 +38,7 @@ export function UtilityBar() {
 
         <div className="flex items-center gap-3">
           <span className="hidden font-semibold uppercase tracking-wide md:inline">{t('welcome')}</span>
-          <div role="group" aria-label={t('language')} className="flex rounded-md border border-white/30 p-0.5">
-            {(['id', 'en'] as Lang[]).map((code) => (
-              <button
-                key={code}
-                type="button"
-                onClick={() => setLang(code)}
-                aria-pressed={lang === code}
-                aria-label={code === 'id' ? t('switchToId') : t('switchToEn')}
-                className={`min-h-8 min-w-10 rounded px-2 font-bold uppercase transition-colors ${
-                  lang === code ? 'bg-white text-brand-900' : 'text-white hover:bg-white/15'
-                }`}
-              >
-                {code}
-              </button>
-            ))}
-          </div>
+          <LanguageMenu />
         </div>
       </div>
     </div>

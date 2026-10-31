@@ -1,7 +1,9 @@
-export type Lang = 'id' | 'en'
+export type Lang = 'id' | 'en' | 'jv'
 
-export type Localized = Record<Lang, string>
-export type LocalizedList = Record<Lang, string[]>
+/** Javanese is optional per field; missing entries fall back to Indonesian. */
+export type LocalizedOf<T> = { id: T; en: T; jv?: T }
+export type Localized = LocalizedOf<string>
+export type LocalizedList = LocalizedOf<string[]>
 
 export interface ImageRef {
   src: string

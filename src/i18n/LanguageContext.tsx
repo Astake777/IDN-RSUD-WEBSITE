@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
-import type { Lang, Localized } from '../data/types'
+import type { Lang, Localized, LocalizedOf } from '../data/types'
 import { ui, type UiKey } from './ui'
 
 const STORAGE_KEY = 'seru-lang'
@@ -10,15 +10,17 @@ interface LanguageValue {
   /** UI string by key. */
   t: (key: UiKey) => string
   /** Pick the current language from a content field. */
-  l: <T>(value: Record<Lang, T>) => T
+  l: <T>(value: LocalizedOf<T>) => T
 }
+
+const pick = <T,>(v: LocalizedOf<T>, lang: Lang): T => v[lang] ?? v.id
 
 const LanguageContext = createContext<LanguageValue | null>(null)
 
 function readStored(): Lang {
   try {
     const v = localStorage.getItem(STORAGE_KEY)
-    return v === 'en' ? 'en' : 'id'
+    return v === 'en' || v === 'jv' ? v : 'id'
   } catch {
     return 'id'
   }
@@ -44,8 +46,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     () => ({
       lang,
       setLang,
-      t: (key) => ui[key][lang],
-      l: (v) => v[lang],
+      t: (key) => pick(ui[key], lang),
+      l: (v) => pick(v, lang),
     }),
     [lang, setLang],
   )

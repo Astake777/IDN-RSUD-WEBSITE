@@ -27,7 +27,10 @@ export interface SearchResult {
 const join = (parts: (Localized | undefined)[], lists: (string[] | undefined)[][] = [[], []]): Localized => ({
   id: [...parts.map((p) => p?.id ?? ''), ...lists[0].flatMap((l) => l ?? [])].filter(Boolean).join(' '),
   en: [...parts.map((p) => p?.en ?? ''), ...lists[1].flatMap((l) => l ?? [])].filter(Boolean).join(' '),
+  jv: [...parts.map((p) => p?.jv ?? p?.id ?? ''), ...(lists[2] ?? lists[0]).flatMap((l) => l ?? [])].filter(Boolean).join(' '),
 })
+
+const textOf = (v: Localized, lang: Lang) => v[lang] ?? v.id
 
 let cache: SearchEntry[] | null = null
 
@@ -125,8 +128,8 @@ export function findRange(source: string, word: string): [number, number] | null
 }
 
 function scoreIn(entry: SearchEntry, lang: Lang, ws: string[]): number {
-  const title = fold(entry.title[lang]).s
-  const text = fold(entry.text[lang]).s
+  const title = fold(textOf(entry.title, lang)).s
+  const text = fold(textOf(entry.text, lang)).s
   let score = 0
   for (const w of ws) {
     if (title.startsWith(w) || title.includes(' ' + w)) score += 3
@@ -149,7 +152,8 @@ function snippet(text: string, ws: string[], size = 90): string {
 export function search(query: string, lang: Lang, limit = 8): SearchResult[] {
   const ws = words(query)
   if (ws.join('').length < 2) return []
-  const other: Lang = lang === 'id' ? 'en' : 'id'
+  // Fallback language: English readers also match Indonesian text and vice versa.
+  const other: Lang = lang === 'en' ? 'id' : 'en'
   const scored: (SearchResult & { score: number })[] = []
   for (const entry of getIndex()) {
     let matchLang = lang
@@ -159,7 +163,7 @@ export function search(query: string, lang: Lang, limit = 8): SearchResult[] {
       score = scoreIn(entry, other, ws) * 0.5
       matchLang = other
     }
-    if (score) scored.push({ entry, matchLang, score, snippet: snippet(entry.text[matchLang], ws) })
+    if (score) scored.push({ entry, matchLang, score, snippet: snippet(textOf(entry.text, matchLang), ws) })
   }
   return scored.sort((a, b) => b.score - a.score).slice(0, limit)
 }

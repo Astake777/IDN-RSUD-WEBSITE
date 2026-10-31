@@ -36,11 +36,11 @@ export interface ServiceDay {
 
 // Brief specifies 07:00 - 18:00 for every day; set closed: true per day only when the hospital confirms it.
 export const serviceHours: ServiceDay[] = [
-  { day: { id: 'Senin', en: 'Monday' }, hours: '07:00 - 18:00', closed: false },
-  { day: { id: 'Selasa', en: 'Tuesday' }, hours: '07:00 - 18:00', closed: false },
-  { day: { id: 'Rabu', en: 'Wednesday' }, hours: '07:00 - 18:00', closed: false },
-  { day: { id: 'Kamis', en: 'Thursday' }, hours: '07:00 - 18:00', closed: false },
-  { day: { id: 'Jumat', en: 'Friday' }, hours: '07:00 - 18:00', closed: false },
-  { day: { id: 'Sabtu', en: 'Saturday' }, hours: '07:00 - 18:00', closed: false },
-  { day: { id: 'Minggu', en: 'Sunday' }, hours: '07:00 - 18:00', closed: false },
+  { day: { id: 'Senin', jv: 'Senen', en: 'Monday' }, hours: '07:00 - 18:00', closed: false },
+  { day: { id: 'Selasa', jv: 'Selasa', en: 'Tuesday' }, hours: '07:00 - 18:00', closed: false },
+  { day: { id: 'Rabu', jv: 'Rebo', en: 'Wednesday' }, hours: '07:00 - 18:00', closed: false },
+  { day: { id: 'Kamis', jv: 'Kemis', en: 'Thursday' }, hours: '07:00 - 18:00', closed: false },
+  { day: { id: 'Jumat', jv: 'Jemuwah', en: 'Friday' }, hours: '07:00 - 18:00', closed: false },
+  { day: { id: 'Sabtu', jv: 'Setu', en: 'Saturday' }, hours: '07:00 - 18:00', closed: false },
+  { day: { id: 'Minggu', jv: 'Minggu', en: 'Sunday' }, hours: '07:00 - 18:00', closed: false },
 ]
