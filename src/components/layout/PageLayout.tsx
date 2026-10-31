@@ -8,11 +8,21 @@ import { UtilityBar } from './UtilityBar'
 function ScrollManager() {
   const { pathname, hash } = useLocation()
   useEffect(() => {
-    if (hash) {
-      document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView()
+    if (!hash) {
+      window.scrollTo(0, 0)
       return
     }
-    window.scrollTo(0, 0)
+    // Pages are lazy, so the target may appear a few frames after navigation.
+    const id = decodeURIComponent(hash.slice(1))
+    let frame = 0
+    let tries = 0
+    const find = () => {
+      const el = document.getElementById(id)
+      if (el) return el.scrollIntoView()
+      if (++tries < 120) frame = requestAnimationFrame(find)
+    }
+    find()
+    return () => cancelAnimationFrame(frame)
   }, [pathname, hash])
   return null
 }
