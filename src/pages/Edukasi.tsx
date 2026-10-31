@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { EducationCard } from '../components/cards/EducationCard'
-import { SectionHeading } from '../components/ui/SectionHeading'
+import { PageHeader } from '../components/ui/PageHeader'
 import { educationTopics } from '../data/education'
 import { MedicalDisclaimer } from '../features/edukasi/MedicalDisclaimer'
 import { s } from '../features/edukasi/strings'
@@ -15,9 +15,10 @@ export default function Edukasi() {
   }, [title])
 
   return (
+    <>
+    <PageHeader title={title} lead={l(s.pageIntro)} crumbs={[{ label: title }]} />
     <section className="container-site py-12 sm:py-16">
-      <SectionHeading as="h1" title={title} lead={l(s.pageIntro)} />
-      <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {educationTopics.map((topic) => (
           <li key={topic.slug}>
             <EducationCard topic={topic} headingLevel="h2" />
@@ -26,5 +27,6 @@ export default function Edukasi() {
       </ul>
       <MedicalDisclaimer className="mt-12 max-w-3xl" />
     </section>
+    </>
   )
 }

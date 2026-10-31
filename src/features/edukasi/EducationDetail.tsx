@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, ChevronRight, Clock, Info, MessageCircleQuestion, Phone, Play } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Clock, Info, MessageCircleQuestion, Phone, Play } from 'lucide-react'
 import { YoutubeIcon } from '../../components/icons/BrandIcons'
 import { contact, social } from '../../config/site'
 import { educationTopics, icuVisitSchedule, VISIT_SCHEDULE_SECTION } from '../../data/education'
 import type { EducationSection, EducationTopic } from '../../data/types'
 import { useLang } from '../../i18n/LanguageContext'
+import { PageHeader } from '../../components/ui/PageHeader'
 import { MedicalDisclaimer } from './MedicalDisclaimer'
 import { side } from './sidebarStrings'
 import { s } from './strings'
@@ -24,9 +25,10 @@ export function EducationDetail({ slug }: { slug: string }) {
 
   if (!topic) {
     return (
-      <section className="container-site py-16 sm:py-24">
-        <h1 className="h-section text-ink">{title}</h1>
-        <p className="mt-3 max-w-xl text-ink-soft">{l(s.topicNotFoundBody)}</p>
+      <>
+        <PageHeader title={title} crumbs={[{ label: t('navEducation'), to: '/edukasi' }, { label: title }]} />
+        <section className="container-site py-12 sm:py-16">
+        <p className="max-w-xl text-ink-soft">{l(s.topicNotFoundBody)}</p>
         <Link
           to="/edukasi"
           className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-control bg-brand-900 px-6 font-bold text-white hover:bg-brand-700"
@@ -34,7 +36,8 @@ export function EducationDetail({ slug }: { slug: string }) {
           <ArrowLeft className="size-4" aria-hidden />
           {l(s.backToList)}
         </Link>
-      </section>
+        </section>
+      </>
     )
   }
 
@@ -48,30 +51,10 @@ export function EducationDetail({ slug }: { slug: string }) {
   ]
 
   return (
-    <article className="container-site py-10 sm:py-14">
-      <nav aria-label={l(s.breadcrumb)} className="text-sm text-ink-soft">
-        <ol className="flex flex-wrap items-center gap-x-1">
-          <li className="flex items-center gap-1">
-            <Link to="/" className="inline-flex min-h-11 items-center hover:text-brand-900 hover:underline">
-              {t('navHome')}
-            </Link>
-            <ChevronRight className="size-4" aria-hidden />
-          </li>
-          <li className="flex items-center gap-1">
-            <Link to="/edukasi" className="inline-flex min-h-11 items-center hover:text-brand-900 hover:underline">
-              {t('navEducation')}
-            </Link>
-            <ChevronRight className="size-4" aria-hidden />
-          </li>
-          <li aria-current="page" className="font-semibold text-ink">
-            {title}
-          </li>
-        </ol>
-      </nav>
-
-      <h1 className="h-section mt-2 max-w-4xl text-ink">{title}</h1>
-
-      <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_22rem]">
+    <>
+    <PageHeader title={title} crumbs={[{ label: t('navEducation'), to: '/edukasi' }, { label: title }]} />
+    <article aria-label={title} className="container-site py-12 sm:py-14">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_22rem]">
         <div className="min-w-0">
           <figure className="overflow-hidden rounded-card border border-line bg-brand-50">
             <img
@@ -197,6 +180,7 @@ export function EducationDetail({ slug }: { slug: string }) {
 
       <OtherTopics current={topic.slug} />
     </article>
+    </>
   )
 }
 

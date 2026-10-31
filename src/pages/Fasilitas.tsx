@@ -4,6 +4,7 @@ import { facilities } from '../data/facilities'
 import { educationTopics } from '../data/education'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { EducationCard } from '../components/cards/EducationCard'
+import { PageHeader } from '../components/ui/PageHeader'
 import { FacilityCard } from '../features/fasilitas/FacilityCard'
 import { s } from '../features/fasilitas/strings'
 import { useLang } from '../i18n/LanguageContext'
@@ -14,9 +15,9 @@ export default function Fasilitas() {
 
   return (
     <>
+      <PageHeader titleId="fasilitas-title" title={l(s.title)} lead={l(s.lead)} crumbs={[{ label: l(s.title) }]} />
       <section aria-labelledby="fasilitas-title" className="container-site py-12 sm:py-16">
-        <SectionHeading as="h1" id="fasilitas-title" title={l(s.title)} lead={l(s.lead)} />
-        <div className="mt-10 grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {facilities.map((f) => (
             <FacilityCard key={f.slug} facility={f} />
           ))}

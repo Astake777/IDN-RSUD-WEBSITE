@@ -7,7 +7,6 @@ export const s = {
     en: 'Education material for patients and their families in the ICU of RSUD dr. Loekmono Hadi Kudus.',
     jv: 'Materi edukasi kangge pasien lan kulawarga pasien wonten ing Ruang ICU RSUD dr. Loekmono Hadi Kudus.',
   },
-  breadcrumb: { id: 'Breadcrumb', en: 'Breadcrumb', jv: 'Breadcrumb' },
   incomplete: {
     id: 'Materi edukasi lengkap untuk topik ini belum tersedia.',
     en: 'Full education material for this topic is not yet available.',

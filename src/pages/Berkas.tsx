@@ -1,4 +1,5 @@
 import { FolderOpen } from 'lucide-react'
+import { PageHeader } from '../components/ui/PageHeader'
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { documents, documentsByCategory } from '../data/documents'
@@ -25,11 +26,9 @@ export default function Berkas() {
 
   return (
     <>
+      <PageHeader title={l(s.title)} lead={l(s.intro)} crumbs={[{ label: l(s.title) }]} />
       <div className="container-site py-10 lg:py-14">
-        <h1 className="h-section text-ink">{l(s.title)}</h1>
-        <p className="mt-3 max-w-3xl text-lg text-ink-soft">{l(s.intro)}</p>
-
-        <div className="mt-8 grid gap-6 lg:grid-cols-[300px_minmax(0,1fr)] lg:items-start lg:gap-10">
+        <div className="grid gap-6 lg:grid-cols-[300px_minmax(0,1fr)] lg:items-start lg:gap-10">
           <aside className="min-w-0 lg:sticky lg:top-[136px]">
             <DocumentSidebar
               active={active}

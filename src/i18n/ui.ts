@@ -44,6 +44,13 @@ export const ui = {
   whatsapp: { id: 'WhatsApp', en: 'WhatsApp', jv: 'WhatsApp' },
   address: { id: 'Alamat', en: 'Address', jv: 'Alamat' },
   openMaps: { id: 'Buka di Google Maps', en: 'Open in Google Maps', jv: 'Bikak wonten Google Maps' },
+  viewOnMaps: { id: 'Lihat Lokasi di Google Maps', en: 'View Location on Google Maps', jv: 'Pirsani Lokasi wonten Google Maps' },
+  mapTitle: {
+    id: 'Peta lokasi RSUD dr. Loekmono Hadi Kudus',
+    en: 'Location map of RSUD dr. Loekmono Hadi Kudus',
+    jv: 'Peta lokasi RSUD dr. Loekmono Hadi Kudus',
+  },
+  breadcrumb: { id: 'Breadcrumb', en: 'Breadcrumb', jv: 'Breadcrumb' },
   backToTop: { id: 'Kembali ke atas', en: 'Back to Top', jv: 'Wangsul ing nginggil' },
 
   // generic
