@@ -1,44 +1,22 @@
-import { useRef, useState, type CSSProperties } from 'react'
+import { useRef } from 'react'
 import { seru } from '../../data/seru'
 import { useLang } from '../../i18n/LanguageContext'
-import { readStore, scrollToId, SIZES, useActiveOnScroll, useInView, useReducedMotion, writeStore } from './hooks'
-import { ReadingProgress, ReadingToolbar, SectionSpy } from './ReadingTools'
+import { scrollToId, useActiveOnScroll, useInView, useReducedMotion } from './hooks'
+import { ReadingProgress, SectionSpy } from './ReadingTools'
 import { MisiSection, NextEducation, ProfilSection, VisiSection } from './Sections'
 import { s } from './strings'
 import './seru.css'
-
-function storedSize() {
-  const n = Number(readStore('seru-size'))
-  return Number.isInteger(n) && n >= 0 && n < SIZES.length ? n : 0
-}
 
 export function SeruSection() {
   const { t, l } = useLang()
   const reduced = useReducedMotion()
   const root = useRef<HTMLDivElement>(null)
   const inView = useInView(root)
-  const [size, setSize] = useState(storedSize)
-  const [dark, setDark] = useState(() => readStore('seru-theme') === 'dark')
   const [spyActive, spyRef] = useActiveOnScroll(3, '-50% 0px -50% 0px')
 
-  const changeSize = (next: number) => {
-    setSize(next)
-    writeStore('seru-size', String(next))
-  }
-  const toggleTheme = () => {
-    setDark(!dark)
-    writeStore('seru-theme', dark ? 'light' : 'dark')
-  }
-
   return (
-    <div
-      ref={root}
-      className="seru"
-      data-theme={dark ? 'dark' : 'light'}
-      style={{ '--seru-scale': SIZES[size] } as CSSProperties}
-    >
+    <div ref={root} className="seru">
       <ReadingProgress target={root} />
-      <ReadingToolbar size={size} onSize={changeSize} dark={dark} onToggleTheme={toggleTheme} />
       {inView && <SectionSpy active={spyActive} reduced={reduced} />}
 
       <div className="seru__top">

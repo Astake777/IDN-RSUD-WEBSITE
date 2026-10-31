@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type RefObject } from 'react'
 
-export const SIZES = [1, 1.12, 1.25]
 
 const motionQuery = '(prefers-reduced-motion: reduce)'
 
@@ -72,22 +71,6 @@ export function useInView(target: RefObject<Element | null>) {
     return () => io.disconnect()
   }, [target])
   return inView
-}
-
-export function readStore(key: string) {
-  try {
-    return localStorage.getItem(key)
-  } catch {
-    return null
-  }
-}
-
-export function writeStore(key: string, value: string) {
-  try {
-    localStorage.setItem(key, value)
-  } catch {
-    /* private mode: preference just won't persist */
-  }
 }
 
 export function scrollToId(id: string, reduced: boolean) {

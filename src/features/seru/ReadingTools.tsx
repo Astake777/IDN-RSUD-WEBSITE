@@ -1,46 +1,8 @@
 import { useRef, type RefObject } from 'react'
 import { seru } from '../../data/seru'
 import { useLang } from '../../i18n/LanguageContext'
-import { scrollToId, SIZES, useScrollFrame } from './hooks'
+import { scrollToId, useScrollFrame } from './hooks'
 import { s } from './strings'
-
-interface ToolbarProps {
-  size: number
-  onSize: (next: number) => void
-  dark: boolean
-  onToggleTheme: () => void
-}
-
-export function ReadingToolbar({ size, onSize, dark, onToggleTheme }: ToolbarProps) {
-  const { l } = useLang()
-  return (
-    <div className="seru__bar">
-      <div className="seru__wrap">
-        <p className="seru__bar-name">
-          <strong>SERU ICU</strong>
-          <span className="seru__hide-sm"> · {l(s.toolbarName)}</span>
-        </p>
-        <div className="seru__tools" role="group" aria-label={l(s.toolbarName)}>
-          <button type="button" className="seru__tool" aria-label={l(s.smaller)} disabled={size === 0} onClick={() => onSize(size - 1)}>
-            A−
-          </button>
-          <button
-            type="button"
-            className="seru__tool"
-            aria-label={l(s.larger)}
-            disabled={size === SIZES.length - 1}
-            onClick={() => onSize(size + 1)}
-          >
-            A+
-          </button>
-          <button type="button" className="seru__tool" aria-pressed={dark} onClick={onToggleTheme}>
-            {l(dark ? s.light : s.dark)}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 export function ReadingProgress({ target }: { target: RefObject<HTMLElement | null> }) {
   const fill = useRef<HTMLElement>(null)
