@@ -17,7 +17,7 @@ export function UtilityBar() {
     <div className="bg-brand-900 text-white text-[0.8125rem]">
       <div className="container-wide flex min-h-10 items-center justify-between gap-4 lg:text-sm">
         <div className="flex min-w-0 items-center gap-x-5 lg:gap-x-10">
-          <span className="hidden font-semibold sm:inline">{t('patientsVisitors')}</span>
+          <span className="hidden whitespace-nowrap font-semibold sm:inline">{t('patientsVisitors')}</span>
           <ul className="flex items-center gap-1 sm:gap-3 lg:gap-8">
             {links.map(({ url, label, Icon, name }) => (
               <li key={name}>
@@ -28,8 +28,8 @@ export function UtilityBar() {
                   className="inline-flex min-h-10 items-center gap-1.5 rounded px-1.5 text-white/90 hover:text-white hover:underline"
                 >
                   <Icon className="size-4 shrink-0" />
-                  <span className="hidden lg:inline">{label}</span>
-                  <span className="sr-only lg:hidden">{name}</span>
+                  <span className="hidden whitespace-nowrap xl:inline">{label}</span>
+                  <span className="sr-only xl:hidden">{name}</span>
                   <span className="sr-only">{t('opensNewTab')}</span>
                 </a>
               </li>
@@ -38,7 +38,7 @@ export function UtilityBar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <p className="hidden items-center gap-1.5 md:inline-flex">
+          <p className="hidden items-center gap-1.5 whitespace-nowrap lg:inline-flex">
             <Clock className="size-4 shrink-0" aria-hidden />
             <span>{t('clinicDays')}</span>
             <span className="font-semibold">{contact.clinicHoursShort}</span>

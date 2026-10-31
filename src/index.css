@@ -14,10 +14,10 @@
   --color-danger: #b42318;
   --color-danger-50: #fdf1ef;
 
-  --color-footer: #0e3a07;
-  --color-footer-text: #c5d6c0;
-  --color-footer-line: #2b5a24;
-  --color-footer-chip: #1a4d12;
+  --color-footer: #111111;
+  --color-footer-text: #b8b8b8;
+  --color-footer-line: #303030;
+  --color-footer-chip: #292929;
 
   --radius-card: 12px;
   --radius-control: 8px;
