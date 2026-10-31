@@ -1,0 +1,51 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+.claude-flow
+
+# Claude Code / agent tooling (never pushed)
+.claude/
+.claude-flow/
+.swarm/
+.hive-mind/
+.ruflo/
+.mcp.json
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+GEMINI.md
+memory/
+coordination/
+claude-flow*
+*.claude*
+design-system/
+anti-slop/
+.superdesign/
+.playwright-mcp/
+
+# Env
+.env
+.env.*
+!.env.example
