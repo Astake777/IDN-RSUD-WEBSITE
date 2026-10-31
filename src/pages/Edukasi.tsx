@@ -1,4 +1,30 @@
-// TODO(agent): build this page.
+import { useEffect } from 'react'
+import { EducationCard } from '../components/cards/EducationCard'
+import { SectionHeading } from '../components/ui/SectionHeading'
+import { educationTopics } from '../data/education'
+import { MedicalDisclaimer } from '../features/edukasi/MedicalDisclaimer'
+import { s } from '../features/edukasi/strings'
+import { useLang } from '../i18n/LanguageContext'
+
 export default function Edukasi() {
-  return <div className="container-site py-16"><h1 className="h-section">Edukasi</h1></div>
+  const { l } = useLang()
+  const title = l(s.pageTitle)
+
+  useEffect(() => {
+    document.title = `${title} · SERU ICU`
+  }, [title])
+
+  return (
+    <section className="container-site py-12 sm:py-16">
+      <SectionHeading as="h1" title={title} lead={l(s.pageIntro)} />
+      <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {educationTopics.map((topic) => (
+          <li key={topic.slug}>
+            <EducationCard topic={topic} headingLevel="h2" />
+          </li>
+        ))}
+      </ul>
+      <MedicalDisclaimer className="mt-12 max-w-3xl" />
+    </section>
+  )
 }
