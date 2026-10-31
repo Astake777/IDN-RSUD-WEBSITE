@@ -1,4 +1,5 @@
-import { social } from '../../config/site'
+import { Clock } from 'lucide-react'
+import { contact, social } from '../../config/site'
 import { useLang } from '../../i18n/LanguageContext'
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from '../icons/BrandIcons'
 import { LanguageMenu } from './LanguageMenu'
@@ -37,7 +38,12 @@ export function UtilityBar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="hidden font-semibold uppercase tracking-wide md:inline">{t('welcome')}</span>
+          <p className="hidden items-center gap-1.5 md:inline-flex">
+            <Clock className="size-4 shrink-0" aria-hidden />
+            <span>{t('clinicDays')}</span>
+            <span className="font-semibold">{contact.clinicHoursShort}</span>
+          </p>
+          <span className="hidden font-semibold uppercase tracking-wide xl:inline">{t('welcome')}</span>
           <LanguageMenu />
         </div>
       </div>

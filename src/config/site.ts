@@ -19,7 +19,11 @@ export const contact = {
   // Keyless embed centred on the hospital's coordinates (-6.8189271, 110.8367072).
   mapsEmbedUrl: 'https://www.google.com/maps?q=-6.8189271,110.8367072&z=17&output=embed',
   email: 'rsuddrloekmonohadi@kuduskab.go.id',
+  clinicHoursShort: '07.00 - 14.00 WIB',
 } as const
+
+// Online registration goes through the GO-DARJA app on Google Play.
+export const registrationUrl = 'https://play.google.com/store/search?q=go-darja&c=apps&hl=id'
 
 export const navItems: { to: string; key: UiKey }[] = [
   { to: '/', key: 'navHome' },
@@ -35,13 +39,13 @@ export interface ServiceDay {
   closed: boolean
 }
 
-// Brief specifies 07:00 - 18:00 for every day; set closed: true per day only when the hospital confirms it.
+// Outpatient clinic hours from the official RSUD site: Monday to Saturday 07:00 - 14:00.
 export const serviceHours: ServiceDay[] = [
-  { day: { id: 'Senin', jv: 'Senen', en: 'Monday' }, hours: '07:00 - 18:00', closed: false },
-  { day: { id: 'Selasa', jv: 'Selasa', en: 'Tuesday' }, hours: '07:00 - 18:00', closed: false },
-  { day: { id: 'Rabu', jv: 'Rebo', en: 'Wednesday' }, hours: '07:00 - 18:00', closed: false },
-  { day: { id: 'Kamis', jv: 'Kemis', en: 'Thursday' }, hours: '07:00 - 18:00', closed: false },
-  { day: { id: 'Jumat', jv: 'Jemuwah', en: 'Friday' }, hours: '07:00 - 18:00', closed: false },
-  { day: { id: 'Sabtu', jv: 'Setu', en: 'Saturday' }, hours: '07:00 - 18:00', closed: false },
-  { day: { id: 'Minggu', jv: 'Minggu', en: 'Sunday' }, hours: '07:00 - 18:00', closed: false },
+  { day: { id: 'Senin', jv: 'Senen', en: 'Monday' }, hours: '07:00 - 14:00', closed: false },
+  { day: { id: 'Selasa', jv: 'Selasa', en: 'Tuesday' }, hours: '07:00 - 14:00', closed: false },
+  { day: { id: 'Rabu', jv: 'Rebo', en: 'Wednesday' }, hours: '07:00 - 14:00', closed: false },
+  { day: { id: 'Kamis', jv: 'Kemis', en: 'Thursday' }, hours: '07:00 - 14:00', closed: false },
+  { day: { id: 'Jumat', jv: 'Jemuwah', en: 'Friday' }, hours: '07:00 - 14:00', closed: false },
+  { day: { id: 'Sabtu', jv: 'Setu', en: 'Saturday' }, hours: '07:00 - 14:00', closed: false },
+  { day: { id: 'Minggu', jv: 'Minggu', en: 'Sunday' }, hours: '', closed: true },
 ]

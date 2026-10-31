@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Menu } from 'lucide-react'
-import { navItems } from '../../config/site'
+import { ChevronRight, Menu } from 'lucide-react'
+import { navItems, registrationUrl } from '../../config/site'
 import { useLang } from '../../i18n/LanguageContext'
 import { SiteSearch } from '../search/SiteSearch'
 import { MobileNavigation } from './MobileNavigation'
@@ -45,10 +45,20 @@ export function MainNavbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="hidden w-56 md:block 2xl:w-72">
+          <div className="hidden w-56 md:block xl:w-48 2xl:w-72">
             <SiteSearch variant="desktop" />
           </div>
           <VoiceToggle />
+          <a
+            href={registrationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden min-h-11 shrink-0 items-center gap-1 rounded-md bg-white px-4 font-bold text-brand-900 hover:bg-brand-50 xl:inline-flex"
+          >
+            {t('registerOnline')}
+            <ChevronRight className="size-4" aria-hidden />
+            <span className="sr-only"> {t('opensNewTab')}</span>
+          </a>
           <button
             type="button"
             onClick={() => setOpen(true)}

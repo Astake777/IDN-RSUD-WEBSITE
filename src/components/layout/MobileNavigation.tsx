@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import { X } from 'lucide-react'
-import { navItems } from '../../config/site'
+import { ChevronRight, X } from 'lucide-react'
+import { navItems, registrationUrl } from '../../config/site'
 import { useLang } from '../../i18n/LanguageContext'
 import { SiteSearch } from '../search/SiteSearch'
 
@@ -99,6 +99,18 @@ export function MobileNavigation({ open, onClose }: Props) {
             ))}
           </ul>
         </nav>
+        <div className="mt-auto border-t border-line p-4">
+          <a
+            href={registrationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-h-12 items-center justify-center gap-1.5 rounded-control bg-brand-900 px-5 font-bold text-white hover:bg-brand-700"
+          >
+            {t('registerOnline')}
+            <ChevronRight className="size-4" aria-hidden />
+            <span className="sr-only"> {t('opensNewTab')}</span>
+          </a>
+        </div>
       </div>
     </div>
   )

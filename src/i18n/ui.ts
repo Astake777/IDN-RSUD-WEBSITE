@@ -55,6 +55,8 @@ export const ui = {
   openNow: { id: 'Sedang buka', en: 'Open now', jv: 'Saweg bikak' },
   closedNow: { id: 'Sedang tutup', en: 'Closed now', jv: 'Saweg tutup' },
   wibNote: { id: 'menurut waktu Kudus (WIB)', en: 'Kudus time (WIB)', jv: 'miturut wekdal Kudus (WIB)' },
+  clinicDays: { id: 'Senin - Sabtu:', en: 'Monday - Saturday:', jv: 'Senen - Setu:' },
+  registerOnline: { id: 'Pendaftaran Online', en: 'Online Registration', jv: 'Pendaftaran Online' },
   backToTop: { id: 'Kembali ke atas', en: 'Back to Top', jv: 'Wangsul ing nginggil' },
 
   // generic
