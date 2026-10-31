@@ -66,7 +66,8 @@ export function useInView(target: RefObject<Element | null>) {
   useEffect(() => {
     const el = target.current
     if (!el) return
-    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting))
+    // Shows once the section fills the lower half, so the rail never sits beside the hero.
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { rootMargin: '0px 0px -50% 0px' })
     io.observe(el)
     return () => io.disconnect()
   }, [target])
