@@ -12,10 +12,10 @@ export function MainNavbar() {
   const close = useCallback(() => setOpen(false), [])
 
   return (
-    <div className="border-b border-line bg-white">
+    <div className="border-b border-white/10 bg-brand-700">
       <div className="container-wide flex h-16 items-center justify-between gap-4 lg:h-[72px]">
         <Link to="/" aria-label={t('homeLink')} className="shrink-0 rounded">
-          <img src="/images/logo.webp" alt="" width={640} height={255} className="h-10 w-auto lg:h-14" />
+          <img src="/images/logo.webp" alt="" width={640} height={255} className="h-10 w-auto brightness-0 invert lg:h-14" />
         </Link>
 
         <nav aria-label={t('mainNav')} className="hidden flex-1 justify-center xl:flex">
@@ -28,8 +28,8 @@ export function MainNavbar() {
                   className={({ isActive }) =>
                     `relative inline-flex min-h-11 items-center rounded-md px-3 text-base font-semibold 2xl:px-4 2xl:text-[1.0625rem] transition-colors ${
                       isActive
-                        ? 'text-brand-900 after:absolute after:inset-x-3 after:-bottom-[13px] after:h-[3px] after:rounded-full after:bg-accent'
-                        : 'text-ink hover:bg-brand-50 hover:text-brand-900'
+                        ? 'text-white after:absolute after:inset-x-3 after:-bottom-[13px] after:h-[3px] after:rounded-full after:bg-accent'
+                        : 'text-white/85 hover:bg-white/10 hover:text-white'
                     }`
                   }
                 >
@@ -49,7 +49,7 @@ export function MainNavbar() {
             onClick={() => setOpen(true)}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="inline-flex min-h-11 items-center gap-2 rounded-md border border-line px-3 font-semibold text-brand-900 hover:bg-brand-50 xl:hidden"
+            className="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/40 px-3 font-semibold text-white hover:bg-white/10 xl:hidden"
           >
             <Menu className="size-5" aria-hidden />
             {t('menu')}

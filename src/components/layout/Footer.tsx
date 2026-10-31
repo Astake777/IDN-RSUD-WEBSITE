@@ -2,11 +2,13 @@ import { ArrowUp, ArrowUpRight, Clock, Mail, MapPin, Phone } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { contact, serviceHours, social } from '../../config/site'
 import { useLang } from '../../i18n/LanguageContext'
-import { FacebookIcon, InstagramIcon, WhatsappIcon, YoutubeIcon } from '../icons/BrandIcons'
+import { FacebookIcon, InstagramIcon, WhatsappIcon, XIcon, YoutubeIcon } from '../icons/BrandIcons'
+import { OpenStatus } from './OpenStatus'
 
-// Only accounts with a verified URL are listed; Twitter/X and Google have none in the sources.
+// Only accounts with a verified URL are listed; Google has none yet.
 const socials = [
   { name: 'Facebook', url: social.facebook.url, Icon: FacebookIcon },
+  { name: 'X (Twitter)', url: social.x.url, Icon: XIcon },
   { name: 'Instagram', url: social.instagram.url, Icon: InstagramIcon },
   { name: 'YouTube', url: social.youtube.url, Icon: YoutubeIcon },
 ]
@@ -59,10 +61,15 @@ export function Footer() {
             SERU ICU (Smart Education Ruang ICU), Instalasi Rawat Intensif RSUD dr. Loekmono Hadi Kudus.
           </p>
           {contact.email && (
-            <a href={`mailto:${contact.email}`} className="mt-5 inline-flex min-h-11 items-center gap-2 text-white hover:underline">
-              <Mail className="size-4" aria-hidden />
-              {contact.email}
-            </a>
+            <div className="mt-6 flex gap-3">
+              <Mail className="mt-1 size-5 shrink-0 text-white" aria-hidden />
+              <div className="min-w-0">
+                <p className="text-sm">{t('email')} :</p>
+                <a href={`mailto:${contact.email}`} className="break-all text-white hover:underline">
+                  {contact.email}
+                </a>
+              </div>
+            </div>
           )}
           <ul className="mt-6 flex gap-3" aria-label={t('footerSocial')}>
             {socials.map(({ name, url, Icon }) => (
@@ -87,12 +94,13 @@ export function Footer() {
             {serviceHours.map((d) => (
               <div key={d.day.en} className="flex items-center justify-between gap-4 py-2">
                 <dt>{l(d.day)}</dt>
-                <dd className={d.closed ? 'rounded bg-brand-900 px-2 py-0.5 font-semibold text-white' : 'font-semibold text-white tabular-nums'}>
+                <dd className={d.closed ? 'rounded bg-white/10 px-2 py-0.5 font-semibold text-[#FFB3A7]' : 'font-semibold text-white tabular-nums'}>
                   {d.closed ? t('closed') : d.hours}
                 </dd>
               </div>
             ))}
           </dl>
+          <OpenStatus />
         </div>
 
         <div className="md:col-span-2 lg:col-span-1">

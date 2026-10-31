@@ -5,6 +5,7 @@ export const social = {
   instagram: { label: '@rsuddr.loekmonohadikudus', url: 'https://www.instagram.com/rsuddr.loekmonohadikudus/' },
   youtube: { label: 'RSLH TV', url: 'https://www.youtube.com/@rslhtv' },
   facebook: { label: 'RsuddrLoekmonohadi', url: 'https://www.facebook.com/profile.php?id=100010833333975' },
+  x: { label: '@rsud_kudus', url: 'https://x.com/rsud_kudus' },
 } as const
 
 export const contact = {
@@ -17,8 +18,7 @@ export const contact = {
   mapsUrl: 'https://maps.app.goo.gl/C244HVRfNJyuhKY56',
   // Keyless embed centred on the hospital's coordinates (-6.8189271, 110.8367072).
   mapsEmbedUrl: 'https://www.google.com/maps?q=-6.8189271,110.8367072&z=17&output=embed',
-  // No official email in the source files; footer hides the row while this is empty.
-  email: '',
+  email: 'rsuddrloekmonohadi@kuduskab.go.id',
 } as const
 
 export const navItems: { to: string; key: UiKey }[] = [

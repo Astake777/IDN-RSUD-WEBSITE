@@ -51,6 +51,10 @@ export const ui = {
     jv: 'Peta lokasi RSUD dr. Loekmono Hadi Kudus',
   },
   breadcrumb: { id: 'Breadcrumb', en: 'Breadcrumb', jv: 'Breadcrumb' },
+  email: { id: 'Email', en: 'Email', jv: 'Email' },
+  openNow: { id: 'Sedang buka', en: 'Open now', jv: 'Saweg bikak' },
+  closedNow: { id: 'Sedang tutup', en: 'Closed now', jv: 'Saweg tutup' },
+  wibNote: { id: 'menurut waktu Kudus (WIB)', en: 'Kudus time (WIB)', jv: 'miturut wekdal Kudus (WIB)' },
   backToTop: { id: 'Kembali ke atas', en: 'Back to Top', jv: 'Wangsul ing nginggil' },
 
   // generic
