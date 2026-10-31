@@ -14,10 +14,10 @@ export function UtilityBar() {
 
   return (
     <div className="bg-brand-900 text-white text-[0.8125rem]">
-      <div className="container-site flex min-h-10 items-center justify-between gap-4">
-        <div className="flex min-w-0 items-center gap-x-5">
+      <div className="container-wide flex min-h-10 items-center justify-between gap-4 lg:text-sm">
+        <div className="flex min-w-0 items-center gap-x-5 lg:gap-x-10">
           <span className="hidden font-semibold sm:inline">{t('patientsVisitors')}</span>
-          <ul className="flex items-center gap-1 sm:gap-3">
+          <ul className="flex items-center gap-1 sm:gap-3 lg:gap-8">
             {links.map(({ url, label, Icon, name }) => (
               <li key={name}>
                 <a

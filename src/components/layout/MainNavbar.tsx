@@ -13,20 +13,20 @@ export function MainNavbar() {
 
   return (
     <div className="border-b border-line bg-white">
-      <div className="container-site flex h-16 items-center justify-between gap-4 lg:h-[72px]">
+      <div className="container-wide flex h-16 items-center justify-between gap-4 lg:h-[72px]">
         <Link to="/" aria-label={t('homeLink')} className="shrink-0 rounded">
-          <img src="/images/logo.webp" alt="" width={640} height={255} className="h-10 w-auto lg:h-12" />
+          <img src="/images/logo.webp" alt="" width={640} height={255} className="h-10 w-auto lg:h-14" />
         </Link>
 
-        <nav aria-label={t('mainNav')} className="hidden xl:block">
-          <ul className="flex items-center gap-1">
+        <nav aria-label={t('mainNav')} className="hidden flex-1 justify-center xl:flex">
+          <ul className="flex items-center gap-1 2xl:gap-4">
             {navItems.map((item) => (
               <li key={item.to}>
                 <NavLink
                   to={item.to}
                   end={item.to === '/'}
                   className={({ isActive }) =>
-                    `relative inline-flex min-h-11 items-center rounded-md px-3 text-[0.9375rem] font-semibold transition-colors ${
+                    `relative inline-flex min-h-11 items-center rounded-md px-3 text-base font-semibold 2xl:px-4 2xl:text-[1.0625rem] transition-colors ${
                       isActive
                         ? 'text-brand-900 after:absolute after:inset-x-3 after:-bottom-[13px] after:h-[3px] after:rounded-full after:bg-accent'
                         : 'text-ink hover:bg-brand-50 hover:text-brand-900'
@@ -41,7 +41,7 @@ export function MainNavbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="hidden w-56 md:block">
+          <div className="hidden w-56 md:block 2xl:w-72">
             <SiteSearch variant="desktop" />
           </div>
           <button

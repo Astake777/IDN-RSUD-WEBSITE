@@ -66,6 +66,13 @@
     margin-inline: auto;
     padding-inline: clamp(1rem, 4vw, 2rem);
   }
+  /* Header spans wider than content, like the mockup, so logo, menu and search spread out. */
+  .container-wide {
+    width: 100%;
+    max-width: 1600px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 3vw, 2.5rem);
+  }
   .h-display {
     font-size: clamp(2rem, 4.2vw, 3.25rem);
     line-height: 1.08;

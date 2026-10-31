@@ -6,7 +6,6 @@ export const s = {
     en: 'ICU-HCU sign at RSUD dr Loekmonohadi Kudus',
     jv: 'Papan nama ICU-HCU RSUD dr Loekmonohadi Kudus',
   },
-  heroCaption: { id: 'RSUD dr. Loekmono Hadi Kudus', en: 'RSUD dr. Loekmono Hadi Kudus', jv: 'RSUD dr. Loekmono Hadi Kudus' },
   start: { id: 'Mulai membaca', en: 'Start reading', jv: 'Wiwit maos' },
   sectionsNav: { id: 'Bagian halaman', en: 'Page sections', jv: 'Perangan kaca' },
   missionN: { id: 'Misi', en: 'Mission', jv: 'Misi' },
