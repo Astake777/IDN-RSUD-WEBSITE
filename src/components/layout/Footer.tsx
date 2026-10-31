@@ -148,7 +148,7 @@ export function Footer() {
 
       <div className="border-t border-footer-line">
         <div className="container-site flex flex-col-reverse items-start justify-between gap-3 py-4 pr-20 text-sm sm:flex-row sm:pr-24 sm:items-center">
-          <p>© 2025 SIMRS - RSUD dr. Loekmono Hadi Kudus.</p>
+          <p>© 2026 RSUD dr. Loekmono Hadi Kudus.</p>
           <button
             type="button"
             onClick={toTop}
