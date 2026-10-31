@@ -30,7 +30,7 @@ export function EducationCard({ topic, headingLevel: H = 'h3' }: Props) {
         <H id={titleId} className="text-lg font-bold leading-snug text-ink">
           {l(topic.title)}
         </H>
-        <p className="mt-2 line-clamp-4 text-[0.9375rem] text-ink-soft">{l(topic.summary)}</p>
+        <p className="mt-2 line-clamp-4 text-[length:calc(0.9375rem*var(--a11y-fs,1))] text-ink-soft">{l(topic.summary)}</p>
         <Link
           to={`/edukasi/${topic.slug}`}
           aria-describedby={titleId}

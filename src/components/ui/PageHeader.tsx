@@ -38,13 +38,13 @@ export function PageHeader({ title, crumbs, lead, titleId, image = '/images/gedu
       <div className="absolute inset-0 -z-10" style={{ backgroundImage: overlay }} aria-hidden />
 
       <div className="container-site py-12 sm:py-16 lg:py-[88px]">
-        <h1 id={titleId} className="max-w-4xl text-[1.75rem] font-bold leading-tight sm:text-[1.875rem] lg:text-[2rem]">
+        <h1 id={titleId} className="max-w-4xl text-[length:calc(1.75rem*var(--a11y-fs,1))] font-bold leading-tight sm:text-[length:calc(1.875rem*var(--a11y-fs,1))] lg:text-[length:calc(2rem*var(--a11y-fs,1))]">
           {title}
         </h1>
         {lead && <p className="mt-3 max-w-3xl text-base text-white/85 sm:text-lg">{lead}</p>}
 
         <nav aria-label={t('breadcrumb')} className="mt-4">
-          <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.9375rem]">
+          <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[length:calc(0.9375rem*var(--a11y-fs,1))]">
             {trail.map((c, i) => {
               const last = i === trail.length - 1
               return (

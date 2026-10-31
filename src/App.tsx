@@ -1,6 +1,8 @@
 import { lazy } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { PageLayout } from './components/layout/PageLayout'
+import { AccessibilityProvider } from './context/AccessibilityContext'
+import { VoiceProvider } from './context/VoiceContext'
 import { LanguageProvider } from './i18n/LanguageContext'
 
 const Home = lazy(() => import('./pages/Home'))
@@ -34,7 +36,11 @@ const router = createBrowserRouter([
 export default function App() {
   return (
     <LanguageProvider>
-      <RouterProvider router={router} />
+      <VoiceProvider>
+        <AccessibilityProvider>
+          <RouterProvider router={router} />
+        </AccessibilityProvider>
+      </VoiceProvider>
     </LanguageProvider>
   )
 }

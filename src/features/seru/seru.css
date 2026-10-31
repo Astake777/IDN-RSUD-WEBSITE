@@ -1,6 +1,6 @@
 /* Ported from "index landing page.html". Every selector is scoped to .seru so nothing leaks into the rest of the site. */
 .seru {
-  --r: 1rem;
+  --r: calc(1rem * var(--a11y-fs, 1));
   --bg: #fff;
   --text: #16261a;
   --dim: #5a6d56;
@@ -404,7 +404,7 @@
   height: 44px;
   margin: 2px 0;
   border-radius: 50%;
-  font-size: 0.8125rem;
+  font-size: calc(var(--r) * 0.8125);
   font-weight: 700;
   color: var(--navy);
   background: var(--bg);

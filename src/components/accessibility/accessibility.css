@@ -1,0 +1,101 @@
+/* Accessibility menu effects. Every rule is scoped to [data-a11y-scope] or #main so the header and panel stay untouched. */
+
+[data-a11y-lh] [data-a11y-scope] :is(p, li, dd, dt, blockquote, td, th, figcaption, label, span, a) {
+  line-height: calc(1.65 * var(--a11y-lh) / 1.2);
+}
+
+[data-a11y-ls] [data-a11y-scope] :is(p, li, dd, dt, blockquote, td, th, h1, h2, h3, h4, h5, h6, a, span, figcaption, button, label) {
+  letter-spacing: calc((var(--a11y-ls) - 1) * 0.12em);
+  word-spacing: calc((var(--a11y-ls) - 1) * 0.16em);
+  overflow-wrap: anywhere;
+}
+
+[data-a11y-zoom] #main > * {
+  zoom: var(--a11y-zoom);
+}
+
+[data-a11y-dyslexia] [data-a11y-scope] :is(p, li, dd, dt, blockquote, td, th, h1, h2, h3, h4, h5, h6, a, span, figcaption, label, button) {
+  font-family: 'OpenDyslexic', var(--font-sans);
+}
+
+[data-a11y-align="left"] [data-a11y-scope] :is(p, li, h1, h2, h3, h4, h5, h6, dd, dt, blockquote, figcaption) {
+  text-align: left;
+}
+[data-a11y-align="center"] [data-a11y-scope] :is(p, li, h1, h2, h3, h4, h5, h6, dd, dt, blockquote, figcaption) {
+  text-align: center;
+}
+[data-a11y-align="right"] [data-a11y-scope] :is(p, li, h1, h2, h3, h4, h5, h6, dd, dt, blockquote, figcaption) {
+  text-align: right;
+}
+
+[data-a11y-hide-images] [data-a11y-scope] img {
+  visibility: hidden;
+}
+[data-a11y-hide-images] [data-a11y-scope] :is(figure, .a11y-img-wrap) {
+  background-color: var(--color-brand-50);
+}
+
+[data-a11y-links] [data-a11y-scope] a {
+  text-decoration: underline 2px;
+  text-underline-offset: 3px;
+  outline: 2px solid #e3a23b;
+  outline-offset: 2px;
+  background-color: #fff6d6;
+  color: #14500a;
+}
+
+[data-a11y-headings] [data-a11y-scope] :is(h1, h2, h3, h4, h5, h6) {
+  outline: 2px solid #1c6d0c;
+  outline-offset: 4px;
+  background-color: rgb(237 245 234 / 0.85);
+  color: #14500a;
+  border-radius: 4px;
+}
+
+[data-a11y-contrast] [data-a11y-scope] {
+  --color-ink-soft: #16261a;
+  --color-line: #5a6d56;
+  --color-brand-700: #14500a;
+}
+[data-a11y-contrast] [data-a11y-scope] a {
+  text-decoration: underline;
+}
+[data-a11y-contrast] [data-a11y-scope] [class*="text-white/"] {
+  color: #fff !important;
+}
+[data-a11y-contrast] [data-a11y-scope] :is(a, button) {
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+}
+[data-a11y-contrast] [data-a11y-scope] :is(a, button):focus-visible {
+  outline-width: 4px;
+}
+
+/* No dark palette exists, so invert #main and re-invert media to keep photos natural. Footer is already dark. */
+html[data-a11y-dark],
+html[data-a11y-dark] body {
+  background: #0b1209;
+}
+html[data-a11y-dark] #main {
+  filter: invert(1) hue-rotate(180deg);
+}
+html[data-a11y-dark] #main :is(img, video, iframe, picture) {
+  filter: invert(1) hue-rotate(180deg);
+}
+html[data-a11y-dark] #main picture img {
+  filter: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-a11y-dark] #main {
+    transition: filter 0.2s ease;
+  }
+}
+
+/* The page header band is already dark green; flip it back so dark mode keeps it dark. */
+html[data-a11y-dark] #main > header {
+  filter: invert(1) hue-rotate(180deg);
+}
+html[data-a11y-dark] #main > header img {
+  filter: none;
+}

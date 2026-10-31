@@ -57,6 +57,20 @@
   img {
     max-width: 100%;
   }
+  /* Accessibility font size: Tailwind v4 text-* utilities read these vars, so redefining them scales content only. */
+  [data-a11y-scope] {
+    --text-xs: calc(0.75rem * var(--a11y-fs, 1));
+    --text-sm: calc(0.875rem * var(--a11y-fs, 1));
+    --text-base: calc(1rem * var(--a11y-fs, 1));
+    --text-lg: calc(1.125rem * var(--a11y-fs, 1));
+    --text-xl: calc(1.25rem * var(--a11y-fs, 1));
+    --text-2xl: calc(1.5rem * var(--a11y-fs, 1));
+    --text-3xl: calc(1.875rem * var(--a11y-fs, 1));
+    --text-4xl: calc(2.25rem * var(--a11y-fs, 1));
+    --text-5xl: calc(3rem * var(--a11y-fs, 1));
+    --text-6xl: calc(3.75rem * var(--a11y-fs, 1));
+    font-size: calc(1rem * var(--a11y-fs, 1));
+  }
 }
 
 @layer components {
@@ -74,13 +88,13 @@
     padding-inline: clamp(1rem, 3vw, 2.5rem);
   }
   .h-display {
-    font-size: clamp(2rem, 4.2vw, 3.25rem);
+    font-size: calc(clamp(2rem, 4.2vw, 3.25rem) * var(--a11y-fs, 1));
     line-height: 1.08;
     font-weight: 800;
     letter-spacing: -0.025em;
   }
   .h-section {
-    font-size: clamp(1.625rem, 3vw, 2.25rem);
+    font-size: calc(clamp(1.625rem, 3vw, 2.25rem) * var(--a11y-fs, 1));
     line-height: 1.15;
     font-weight: 800;
     letter-spacing: -0.02em;

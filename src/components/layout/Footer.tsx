@@ -46,7 +46,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-footer text-footer-text">
+    <footer data-a11y-scope className="bg-footer text-footer-text">
       <div className="container-site grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-[1.1fr_1fr_1.2fr] lg:gap-12 lg:py-14">
         <div>
           <img
@@ -147,7 +147,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-footer-line">
-        <div className="container-site flex flex-col-reverse items-start justify-between gap-3 py-4 text-sm sm:flex-row sm:items-center">
+        <div className="container-site flex flex-col-reverse items-start justify-between gap-3 py-4 pr-20 text-sm sm:flex-row sm:pr-24 sm:items-center">
           <p>© 2025 SIMRS - RSUD dr. Loekmono Hadi Kudus.</p>
           <button
             type="button"

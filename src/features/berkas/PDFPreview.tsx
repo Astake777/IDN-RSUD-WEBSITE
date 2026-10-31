@@ -22,23 +22,31 @@ export function PDFPreview({ doc, opener, onClose }: Props) {
   useEffect(() => {
     const dialog = ref.current
     if (!dialog) return
-    dialog.showModal()
+    if (!dialog.open) dialog.showModal()
     const prevOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => {
       document.body.style.overflow = prevOverflow
-      if (dialog.open) dialog.close()
-      opener?.focus()
     }
-  }, [opener])
+  }, [])
+
+  // Closing via close() here (not in effect cleanup) so StrictMode's remount can't fire a stray close event.
+  const close = () => {
+    ref.current?.close()
+    onClose()
+    opener?.focus()
+  }
 
   return (
     <dialog
       ref={ref}
       aria-labelledby="pdf-preview-title"
-      onClose={onClose}
+      onClose={() => {
+        onClose()
+        opener?.focus()
+      }}
       onClick={(e) => {
-        if (e.target === e.currentTarget) onClose()
+        if (e.target === e.currentTarget) close()
       }}
       className="m-auto h-[min(92dvh,900px)] w-[min(96vw,1100px)] max-w-none overflow-hidden rounded-card bg-white p-0 text-ink shadow-card backdrop:bg-ink/60"
     >
@@ -63,7 +71,7 @@ export function PDFPreview({ doc, opener, onClose }: Props) {
           </div>
           <button
             type="button"
-            onClick={onClose}
+            onClick={close}
             aria-label={l(s.close)}
             className="inline-flex size-11 shrink-0 items-center justify-center rounded-control text-ink hover:bg-brand-50"
           >

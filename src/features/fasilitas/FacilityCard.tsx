@@ -37,7 +37,7 @@ export function FacilityCard({ facility: f }: { facility: Facility }) {
         <h2 id={titleId} className="text-lg font-bold leading-snug text-ink">
           {l(f.name)}
         </h2>
-        <div id={bodyId} className="mt-2 space-y-3 text-[0.9375rem] text-ink-soft">
+        <div id={bodyId} className="mt-2 space-y-3 text-[length:calc(0.9375rem*var(--a11y-fs,1))] text-ink-soft">
           {open ? (
             <>
               {paragraphs.map((p) => (

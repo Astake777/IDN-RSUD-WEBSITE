@@ -86,7 +86,7 @@ export function EducationDetail({ slug }: { slug: string }) {
             </p>
           )}
 
-          <div className="mt-8 max-w-[72ch] space-y-10 text-[1.0625rem] leading-relaxed text-ink sm:text-[1.125rem]">
+          <div className="mt-8 max-w-[72ch] space-y-10 text-[length:calc(1.0625rem*var(--a11y-fs,1))] leading-relaxed text-ink sm:text-[length:calc(1.125rem*var(--a11y-fs,1))]">
             {topic.sections.map((sec, i) => (
               <Section
                 key={sectionId(i)}
@@ -144,7 +144,7 @@ export function EducationDetail({ slug }: { slug: string }) {
             {toc.length > 1 && (
               <nav aria-label={l(s.toc)} className="hidden rounded-card border border-line bg-white p-5 lg:block">
                 <p className="text-sm font-bold uppercase tracking-wide text-ink-soft">{l(s.toc)}</p>
-                <ul className="mt-3 border-l border-line text-[0.9375rem]">
+                <ul className="mt-3 border-l border-line text-[length:calc(0.9375rem*var(--a11y-fs,1))]">
                   {toc.map((item) => (
                     <li key={item.id}>
                       <a
@@ -164,7 +164,7 @@ export function EducationDetail({ slug }: { slug: string }) {
                 <MessageCircleQuestion className="size-5" aria-hidden />
                 {l(side.helpTitle)}
               </p>
-              <p className="mt-2 text-[0.9375rem] text-white/90">{l(side.helpBody)}</p>
+              <p className="mt-2 text-[length:calc(0.9375rem*var(--a11y-fs,1))] text-white/90">{l(side.helpBody)}</p>
               <a
                 href={contact.phoneHref}
                 className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-control bg-white px-4 font-bold text-brand-900 hover:bg-brand-50"
@@ -205,7 +205,7 @@ function Section({ id, section, schedule }: { id: string; section: EducationSect
         </ul>
       )}
       {section.note && (
-        <p className="mt-4 rounded-control border border-line bg-white p-4 text-[0.9375rem] text-ink-soft">
+        <p className="mt-4 rounded-control border border-line bg-white p-4 text-[length:calc(0.9375rem*var(--a11y-fs,1))] text-ink-soft">
           {l(section.note)}
         </p>
       )}

@@ -5,6 +5,7 @@ import { navItems } from '../../config/site'
 import { useLang } from '../../i18n/LanguageContext'
 import { SiteSearch } from '../search/SiteSearch'
 import { MobileNavigation } from './MobileNavigation'
+import { VoiceToggle } from './VoiceToggle'
 
 export function MainNavbar() {
   const { t } = useLang()
@@ -44,6 +45,7 @@ export function MainNavbar() {
           <div className="hidden w-56 md:block 2xl:w-72">
             <SiteSearch variant="desktop" />
           </div>
+          <VoiceToggle />
           <button
             type="button"
             onClick={() => setOpen(true)}

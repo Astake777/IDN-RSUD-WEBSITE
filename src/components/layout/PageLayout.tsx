@@ -1,6 +1,11 @@
 import { Suspense, useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { useLang } from '../../i18n/LanguageContext'
+import { AccessibilityButton } from '../accessibility/AccessibilityButton'
+import { AccessibilityPanel } from '../accessibility/AccessibilityPanel'
+import { ReadingMask } from '../accessibility/ReadingMask'
+import { TextMagnifier } from '../accessibility/TextMagnifier'
+import '../accessibility/accessibility.css'
 import { Footer } from './Footer'
 import { MainNavbar } from './MainNavbar'
 import { UtilityBar } from './UtilityBar'
@@ -42,7 +47,7 @@ export function PageLayout() {
         <UtilityBar />
         <MainNavbar />
       </header>
-      <main id="main" tabIndex={-1} className="min-h-[60vh] outline-none">
+      <main id="main" data-a11y-scope tabIndex={-1} className="min-h-[60vh] outline-none">
         <Suspense
           fallback={
             <p role="status" className="container-site py-24 text-ink-soft">
@@ -54,6 +59,10 @@ export function PageLayout() {
         </Suspense>
       </main>
       <Footer />
+      <AccessibilityButton />
+      <AccessibilityPanel />
+      <ReadingMask />
+      <TextMagnifier />
     </>
   )
 }
