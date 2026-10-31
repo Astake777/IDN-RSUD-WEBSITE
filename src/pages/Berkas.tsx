@@ -26,15 +26,19 @@ export default function Berkas() {
 
   return (
     <>
-      <img
-        src="/images/gedung-rs.webp"
-        alt={l(s.buildingAlt)}
-        width={1024}
-        height={576}
-        fetchPriority="high"
-        decoding="async"
-        className="block h-[180px] w-full object-cover object-[center_30%] sm:h-[240px] lg:h-[300px]"
-      />
+      <div className="relative">
+        <img
+          src="/images/gedung-rs.webp"
+          alt={l(s.buildingAlt)}
+          width={1024}
+          height={576}
+          fetchPriority="high"
+          decoding="async"
+          className="block h-[160px] w-full object-cover object-[center_30%] opacity-80 saturate-[.7] sm:h-[220px] lg:h-[260px]"
+        />
+        {/* Fade into the white page header so the photo reads as part of the page, not a separate block. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/10 to-white" aria-hidden />
+      </div>
       <PageHeader title={l(s.title)} lead={l(s.intro)} crumbs={[{ label: l(s.title) }]} />
       <div className="container-site py-10 lg:py-14">
         <div className="grid gap-6 lg:grid-cols-[300px_minmax(0,1fr)] lg:items-start lg:gap-10">

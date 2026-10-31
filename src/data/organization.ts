@@ -217,13 +217,14 @@ export const orgSource: Localized = {
 }
 
 export interface RoomCategory {
-  id: 'spesialis' | 'umum' | 'perawat' | 'administrasi'
+  id: 'konsultan' | 'spesialis' | 'umum' | 'perawat' | 'administrasi'
   label: Localized
   /** Undefined when the source gives no headcount. */
   count?: number
 }
 
 export const roomData: RoomCategory[] = [
+  { id: 'konsultan', label: { id: 'Dokter Konsultan Intensive Care', en: 'Intensive Care Consultant', jv: 'Dokter Konsultan Intensive Care' } },
   { id: 'spesialis', label: { id: 'Dokter Spesialis', en: 'Specialist Doctors', jv: 'Dokter Spesialis' }, count: 1 },
   { id: 'umum', label: { id: 'Dokter Umum', en: 'General Practitioners', jv: 'Dokter Umum' }, count: 5 },
   { id: 'perawat', label: { id: 'Perawat', en: 'Nurses', jv: 'Perawat' }, count: 26 },

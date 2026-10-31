@@ -1,6 +1,14 @@
 import type { Localized } from '../../data/types'
 
 export const s = {
+  heroKicker: { id: 'RSUD dr. Loekmono Hadi Kudus', en: 'RSUD dr. Loekmono Hadi Kudus', jv: 'RSUD dr. Loekmono Hadi Kudus' },
+  heroTitle: { id: 'Instalasi Rawat Intensif (ICU)', en: 'Intensive Care Unit (ICU)', jv: 'Instalasi Rawat Intensif (ICU)' },
+  heroLead: {
+    id: 'Perawatan intensif 24 jam bagi pasien dengan kondisi kritis, melalui kolaborasi multidisiplin yang berorientasi pada keselamatan pasien.',
+    en: 'Round-the-clock intensive care for critically ill patients, delivered by a multidisciplinary team focused on patient safety.',
+    jv: 'Perawatan intensif 24 jam kangge pasien ingkang kawontenanipun kritis, lumantar kolaborasi multidisiplin ingkang ngutamakaken keselamatan pasien.',
+  },
+  heroNav: { id: 'Mau ke mana?', en: 'Where would you like to go?', jv: 'Badhe tindak pundi?' },
   heroAlt: {
     id: 'Papan nama ICU-HCU RSUD dr Loekmonohadi Kudus',
     en: 'ICU-HCU sign at RSUD dr Loekmonohadi Kudus',

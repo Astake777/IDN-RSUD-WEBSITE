@@ -1,10 +1,11 @@
-import { ClipboardList, HeartPulse, Stethoscope, UserRound, type LucideIcon } from 'lucide-react'
+import { BriefcaseMedical, ClipboardList, HeartPulse, Stethoscope, UserRound, type LucideIcon } from 'lucide-react'
 import { SectionHeading } from '../../components/ui/SectionHeading'
 import { useLang } from '../../i18n/LanguageContext'
 import { roomData, type RoomCategory } from '../../data/organization'
 import { people, s } from './strings'
 
 const icons: Record<RoomCategory['id'], LucideIcon> = {
+  konsultan: BriefcaseMedical,
   spesialis: Stethoscope,
   umum: UserRound,
   perawat: HeartPulse,
