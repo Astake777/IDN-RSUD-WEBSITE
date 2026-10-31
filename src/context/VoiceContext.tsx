@@ -18,12 +18,26 @@ const WELCOME_KEY = 'seru-voice-welcome'
 const supported =
   typeof window !== 'undefined' && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window
 
+// On by default; only an explicit switch-off ("0") is remembered.
 function readEnabled() {
   try {
-    return localStorage.getItem(STORAGE_KEY) === '1'
+    return localStorage.getItem(STORAGE_KEY) !== '0'
   } catch {
-    return false
+    return true
   }
+}
+
+// Known male voices across Edge, Windows, Chrome and macOS; the first match per language wins.
+const MALE_VOICES = /\b(ardi|andika|gilang|david|mark|guy|andrew|brian|christopher|eric|roger|steffan|daniel|alex|fred|ryan|male)\b/i
+// No male voice on the device: a lower pitch makes the available voice sound deeper.
+const FALLBACK_PITCH = 0.7
+
+function pickVoice(voices: SpeechSynthesisVoice[], bcp: string) {
+  const base = bcp.slice(0, 2)
+  const sameLang = voices.filter((v) => v.lang.replace('_', '-').toLowerCase().startsWith(base))
+  const exact = sameLang.filter((v) => v.lang.replace('_', '-') === bcp)
+  const male = exact.find((v) => MALE_VOICES.test(v.name)) ?? sameLang.find((v) => MALE_VOICES.test(v.name))
+  return { voice: male ?? exact[0] ?? sameLang[0], male: !!male }
 }
 
 function welcomed() {
@@ -85,11 +99,9 @@ export function VoiceProvider({ children }: { children: ReactNode }) {
     const u = new SpeechSynthesisUtterance(clean)
     const bcp = langRef.current === 'en' ? 'en-US' : 'id-ID'
     u.lang = bcp
-    const base = bcp.slice(0, 2)
-    const voice =
-      voicesRef.current.find((v) => v.lang.replace('_', '-') === bcp) ??
-      voicesRef.current.find((v) => v.lang.toLowerCase().startsWith(base))
+    const { voice, male } = pickVoice(voicesRef.current, bcp)
     if (voice) u.voice = voice
+    u.pitch = male ? 1 : FALLBACK_PITCH
     u.onstart = () => setSpeaking(true)
     u.onend = () => setSpeaking(false)
     u.onerror = () => setSpeaking(false)
