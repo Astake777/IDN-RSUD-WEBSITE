@@ -28,9 +28,9 @@ export function HomeHero() {
         alt={l(s.heroAlt)}
         loading="eager"
         fetchPriority="high"
-        className="relative block aspect-[16/9] w-full object-cover lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:h-full lg:w-[62%] lg:object-left lg:[mask-image:linear-gradient(90deg,transparent,#000_22%)]"
+        className="relative block aspect-[16/9] w-full object-cover lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:h-full lg:w-[60%] lg:object-left lg:[mask-image:linear-gradient(90deg,transparent,#000_7%)]"
       />
-      <div aria-hidden className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgb(237_245_234/0.85)_0%,rgb(237_245_234/0.6)_38%,transparent_55%)] lg:block" />
+      <div aria-hidden className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgb(237_245_234/0.85)_0%,rgb(237_245_234/0.6)_30%,transparent_42%)] lg:block" />
 
       <div className="relative lg:flex lg:h-full lg:items-center">
         <div className="container-site py-8 lg:py-0">
