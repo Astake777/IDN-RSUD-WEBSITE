@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, ChevronRight, Clock, Info, Play } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ChevronRight, Clock, Info, MessageCircleQuestion, Phone, Play } from 'lucide-react'
 import { YoutubeIcon } from '../../components/icons/BrandIcons'
-import { social } from '../../config/site'
+import { contact, social } from '../../config/site'
 import { educationTopics, icuVisitSchedule, VISIT_SCHEDULE_SECTION } from '../../data/education'
 import type { EducationSection, EducationTopic } from '../../data/types'
 import { useLang } from '../../i18n/LanguageContext'
 import { MedicalDisclaimer } from './MedicalDisclaimer'
+import { side } from './sidebarStrings'
 import { s } from './strings'
 
 const linkCls = 'font-semibold text-brand-700 underline-offset-4 hover:text-brand-900 hover:underline'
@@ -45,7 +46,6 @@ export function EducationDetail({ slug }: { slug: string }) {
     ...topic.sections.map((sec, i) => ({ id: sectionId(i), label: l(sec.heading) })),
     ...(topic.importantMessage ? [{ id: messageId, label: l(s.importantTitle) }] : []),
   ]
-  const videoUrl = topic.videoUrl ?? social.youtube.url
 
   return (
     <article className="container-site py-10 sm:py-14">
@@ -71,8 +71,8 @@ export function EducationDetail({ slug }: { slug: string }) {
 
       <h1 className="h-section mt-2 max-w-4xl text-ink">{title}</h1>
 
-      <div className="mt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-12">
-        <div className="min-w-0 max-w-[70ch]">
+      <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_22rem]">
+        <div className="min-w-0">
           <figure className="overflow-hidden rounded-card border border-line bg-brand-50">
             <img
               src={topic.image.src}
@@ -103,7 +103,7 @@ export function EducationDetail({ slug }: { slug: string }) {
             </p>
           )}
 
-          <div className="mt-8 space-y-10 text-[1.0625rem] leading-relaxed text-ink sm:text-[1.125rem]">
+          <div className="mt-8 max-w-[72ch] space-y-10 text-[1.0625rem] leading-relaxed text-ink sm:text-[1.125rem]">
             {topic.sections.map((sec, i) => (
               <Section
                 key={sectionId(i)}
@@ -130,35 +130,6 @@ export function EducationDetail({ slug }: { slug: string }) {
             )}
           </div>
 
-          <a
-            href={videoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group mt-10 flex flex-col overflow-hidden rounded-card border border-line bg-white hover:border-brand-700/40 hover:shadow-card sm:flex-row"
-          >
-            <span className="relative block aspect-video shrink-0 bg-brand-50 sm:w-56">
-              <img src={topic.image.src} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
-              <span className="absolute inset-0 grid place-items-center bg-ink/30">
-                <span className="grid size-14 place-items-center rounded-full bg-white text-danger shadow-card">
-                  <Play className="ml-0.5 size-6 fill-current" aria-hidden />
-                </span>
-              </span>
-            </span>
-            <span className="flex flex-col justify-center gap-1 p-5">
-              <span className="flex items-center gap-2 text-sm font-semibold text-ink-soft">
-                <YoutubeIcon className="size-5 text-danger" />
-                {l(s.videoTitle)}
-              </span>
-              <span className="text-lg font-bold text-ink group-hover:text-brand-900 group-hover:underline">
-                {l(s.videoCta)}
-              </span>
-              <span className="text-sm text-ink-soft">
-                {l(topic.videoUrl ? s.videoTopicHint : s.videoChannelHint)}
-                <span className="sr-only"> {t('opensNewTab')}</span>
-              </span>
-            </span>
-          </a>
-
           <nav aria-label={l(s.topicNav)} className="mt-10 border-t border-line pt-8">
             <ul className="grid gap-4 sm:grid-cols-2">
               {prev && (
@@ -181,26 +152,50 @@ export function EducationDetail({ slug }: { slug: string }) {
           <MedicalDisclaimer className="mt-8" />
         </div>
 
-        {toc.length > 1 && (
-          <nav aria-label={l(s.toc)} className="hidden lg:block">
-            <div className="sticky top-36">
-              <p className="text-sm font-bold uppercase tracking-wide text-ink-soft">{l(s.toc)}</p>
-              <ul className="mt-3 border-l border-line text-[0.9375rem]">
-                {toc.map((item) => (
-                  <li key={item.id}>
-                    <a
-                      href={`#${item.id}`}
-                      className="-ml-px block border-l-2 border-transparent py-1.5 pl-4 text-ink-soft hover:border-brand-700 hover:text-brand-900"
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+
+        {/* Desktop: stays in view beside the text. Mobile: stacks after the article. */}
+        <aside className="min-w-0">
+          <div className="space-y-6 lg:sticky lg:top-[136px]">
+            <VideoCard topic={topic} />
+
+            {toc.length > 1 && (
+              <nav aria-label={l(s.toc)} className="hidden rounded-card border border-line bg-white p-5 lg:block">
+                <p className="text-sm font-bold uppercase tracking-wide text-ink-soft">{l(s.toc)}</p>
+                <ul className="mt-3 border-l border-line text-[0.9375rem]">
+                  {toc.map((item) => (
+                    <li key={item.id}>
+                      <a
+                        href={`#${item.id}`}
+                        className="-ml-px block border-l-2 border-transparent py-1.5 pl-4 leading-snug text-ink-soft hover:border-brand-700 hover:text-brand-900"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )}
+
+            <div className="rounded-card bg-brand-900 p-5 text-white">
+              <p className="flex items-center gap-2 font-bold">
+                <MessageCircleQuestion className="size-5" aria-hidden />
+                {l(side.helpTitle)}
+              </p>
+              <p className="mt-2 text-[0.9375rem] text-white/90">{l(side.helpBody)}</p>
+              <a
+                href={contact.phoneHref}
+                className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-control bg-white px-4 font-bold text-brand-900 hover:bg-brand-50"
+              >
+                <Phone className="size-4" aria-hidden />
+                <span className="sr-only">{l(side.helpPhone)}: </span>
+                {contact.phoneLabel}
+              </a>
             </div>
-          </nav>
-        )}
+          </div>
+        </aside>
       </div>
+
+      <OtherTopics current={topic.slug} />
     </article>
   )
 }
@@ -270,5 +265,91 @@ function TopicLink({ topic, label, dir }: { topic: EducationTopic; label: string
       </span>
       <span className="font-bold text-brand-900">{l(topic.title)}</span>
     </Link>
+  )
+}
+
+/** Video id from youtu.be/<id> or youtube.com/watch?v=<id> links. */
+function youtubeId(url: string) {
+  try {
+    const u = new URL(url)
+    if (u.hostname === 'youtu.be') return u.pathname.slice(1) || null
+    return u.searchParams.get('v')
+  } catch {
+    return null
+  }
+}
+
+function VideoCard({ topic }: { topic: EducationTopic }) {
+  const { t, l } = useLang()
+  const url = topic.videoUrl ?? social.youtube.url
+  const id = topic.videoUrl ? youtubeId(topic.videoUrl) : null
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block overflow-hidden rounded-card border border-line bg-white hover:border-brand-700/40 hover:shadow-card"
+    >
+      <span className="relative block aspect-video bg-ink">
+        <img
+          src={id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : topic.image.src}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="size-full object-cover"
+        />
+        <span className="absolute inset-0 grid place-items-center bg-ink/25 transition-colors group-hover:bg-ink/10">
+          <span className="grid size-14 place-items-center rounded-full bg-white text-danger shadow-card">
+            <Play className="ml-0.5 size-6 fill-current" aria-hidden />
+          </span>
+        </span>
+      </span>
+      <span className="flex flex-col gap-1 p-5">
+        <span className="flex items-center gap-2 text-sm font-semibold text-ink-soft">
+          <YoutubeIcon className="size-5 text-danger" />
+          {l(s.videoTitle)}
+        </span>
+        <span className="text-lg font-bold leading-snug text-ink group-hover:text-brand-900 group-hover:underline">
+          {l(s.videoCta)}
+        </span>
+        <span className="text-sm text-ink-soft">
+          {l(topic.videoUrl ? s.videoTopicHint : s.videoChannelHint)}
+          <span className="sr-only"> {t('opensNewTab')}</span>
+        </span>
+      </span>
+    </a>
+  )
+}
+
+function OtherTopics({ current }: { current: string }) {
+  const { l } = useLang()
+  const others = educationTopics.filter((x) => x.slug !== current)
+  return (
+    <section aria-labelledby="edu-lainnya" className="mt-16 border-t border-line pt-10">
+      <h2 id="edu-lainnya" className="text-2xl font-bold text-ink">
+        {l(side.otherTopics)}
+      </h2>
+      <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {others.map((x) => (
+          <li key={x.slug}>
+            <Link
+              to={`/edukasi/${x.slug}`}
+              className="group flex h-full items-center gap-3 rounded-card border border-line bg-white p-3 hover:border-brand-700/40 hover:shadow-card"
+            >
+              <img
+                src={x.image.src}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="size-16 shrink-0 rounded-control bg-brand-50 object-cover"
+              />
+              <span className="font-semibold leading-snug text-ink group-hover:text-brand-900 group-hover:underline">
+                {l(x.title)}
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
   )
 }
