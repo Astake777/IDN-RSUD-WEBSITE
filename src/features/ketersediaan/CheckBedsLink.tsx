@@ -10,9 +10,9 @@ export function CheckBedsLink({ className = '' }: { className?: string }) {
   return (
     <Link
       to={BEDS_PATH}
-      className={`inline-flex min-h-12 items-center gap-2.5 rounded-control bg-brand-700 px-5 font-bold text-white shadow-card transition-colors hover:bg-brand-900 ${className}`}
+      className={`inline-flex min-h-11 items-center gap-2 rounded-control border border-brand-700/30 bg-white/70 px-4 text-[length:calc(0.9375rem*var(--a11y-fs,1))] font-semibold text-brand-900 transition-colors hover:border-brand-700/60 hover:bg-white ${className}`}
     >
-      <BedDouble aria-hidden className="size-5" />
+      <BedDouble aria-hidden className="size-[1.125rem] text-brand-700" />
       {l(s.cta)}
     </Link>
   )
