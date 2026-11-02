@@ -3,7 +3,7 @@ import type { Localized } from './types'
 // Source: Profil_Ruang_ICU_Rapi.docx and index landing page.html (wording kept from the HTML).
 export const seru = {
   kicker: { id: 'Edukasi untuk pasien dan keluarga', en: 'Education for patients and families', jv: 'Edukasi kangge pasien lan kulawarga' },
-  title: { id: 'SERU ICU', en: 'SERU ICU', jv: 'SERU ICU' },
+  title: { id: 'SERU - ICU', en: 'SERU - ICU', jv: 'SERU - ICU' },
   subtitle: { id: 'Smart Education Ruang ICU', en: 'Smart Education for the ICU', jv: 'Smart Education Ruang ICU' },
   lead: {
     id: 'Ruang untuk mengenal perawatan intensif melalui informasi yang jelas, terukur, dan berorientasi pada keselamatan pasien.',
