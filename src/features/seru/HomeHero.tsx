@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useLang } from '../../i18n/LanguageContext'
 import type { Localized } from '../../data/types'
+import { CheckBedsLink } from '../ketersediaan/CheckBedsLink'
 import { s } from './strings'
 
 const links: { to: string; label: Localized }[] = [
@@ -43,6 +44,7 @@ export function HomeHero() {
               {l(s.heroTitle)}
             </p>
             <p className="mt-4 leading-relaxed text-ink-soft lg:text-ink/75">{l(s.heroLead)}</p>
+            <CheckBedsLink className="mt-6" />
 
             <nav aria-label={l(s.heroNav)} className="mt-6 border-t border-ink/10 pt-4">
               <ul className="-ml-3 flex flex-wrap gap-y-1">

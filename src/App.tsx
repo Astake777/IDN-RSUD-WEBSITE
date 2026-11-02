@@ -11,7 +11,8 @@ const Fasilitas = lazy(() => import('./pages/Fasilitas'))
 const Edukasi = lazy(() => import('./pages/Edukasi'))
 const EducationDetailPage = lazy(() => import('./pages/EducationDetailPage'))
 const Berkas = lazy(() => import('./pages/Berkas'))
-const NotFound = lazy(() => import('./pages/NotFound'))
+const Ketersediaan = lazy(() => import('./pages/Ketersediaan'))
+const NotFound =lazy(() => import('./pages/NotFound'))
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
         ],
       },
       { path: '/berkas-icu', element: <Berkas /> },
+      { path: '/ketersediaan-tempat-tidur', element: <Ketersediaan /> },
       { path: '*', element: <NotFound /> },
     ],
   },
