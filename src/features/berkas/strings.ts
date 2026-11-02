@@ -3,9 +3,9 @@ import type { Localized } from '../../data/types'
 export const s = {
   title: { id: 'Berkas ICU', en: 'ICU Documents', jv: 'Berkas ICU' },
   intro: {
-    id: 'Arsip pedoman dan SOP Ruang ICU RSUD dr. Loekmono Hadi Kudus, dikelompokkan per kategori.',
-    en: 'Archive of ICU guidelines and SOPs at RSUD dr. Loekmono Hadi Kudus, grouped by category.',
-    jv: 'Arsip pedoman lan SOP Ruang ICU RSUD dr. Loekmono Hadi Kudus, dipunkelompokaken miturut kategori.',
+    id: 'Arsip pedoman dan SPO Ruang ICU RSUD dr. Loekmono Hadi Kudus, dikelompokkan per kategori.',
+    en: 'Archive of ICU guidelines and SPOs at RSUD dr. Loekmono Hadi Kudus, grouped by category.',
+    jv: 'Arsip pedoman lan SPO Ruang ICU RSUD dr. Loekmono Hadi Kudus, dipunkelompokaken miturut kategori.',
   },
   categories: { id: 'Kategori berkas', en: 'Document categories', jv: 'Kategori berkas' },
   docCount: { id: 'dokumen', en: 'documents', jv: 'dokumen' },

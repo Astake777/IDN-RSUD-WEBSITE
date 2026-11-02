@@ -11,8 +11,8 @@ export const social = {
 export const contact = {
   phoneLabel: '(0291) 444001',
   phoneHref: 'tel:+62291444001',
-  whatsappLabel: '0815-7553-1104',
-  whatsappHref: 'https://wa.me/6281575531104',
+  whatsappLabel: '+62 857-2775-1035',
+  whatsappHref: 'https://wa.me/6285727751035',
   address:
     'Jl. Dr. Lukmono Hadi No.19, Cobowo, Ploso, Kecamatan Jati, Kabupaten Kudus, Jawa Tengah 59348',
   mapsUrl: 'https://maps.app.goo.gl/C244HVRfNJyuhKY56',

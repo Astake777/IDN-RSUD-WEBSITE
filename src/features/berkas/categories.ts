@@ -22,14 +22,14 @@ export const documentCategories: DocumentCategoryInfo[] = [
     icon: Network,
   },
   {
-    slug: 'sop-keperawatan',
-    label: { id: 'SOP Keperawatan', en: 'Nursing SOPs', jv: 'SOP Keperawatan' },
+    slug: 'spo-keperawatan',
+    label: { id: 'SPO Keperawatan', en: 'Nursing SPOs', jv: 'SPO Keperawatan' },
     description: { id: 'Standar prosedur operasional keperawatan.', en: 'Standard operating procedures for nursing.', jv: 'Standar prosedur operasional keperawatan.' },
     icon: ClipboardList,
   },
   {
-    slug: 'sop-ruang-icu',
-    label: { id: 'SOP Ruang ICU', en: 'ICU Room SOPs', jv: 'SOP Ruang ICU' },
+    slug: 'spo-ruang-icu',
+    label: { id: 'SPO Ruang ICU', en: 'ICU Room SPOs', jv: 'SPO Ruang ICU' },
     description: { id: 'Standar prosedur operasional Ruang ICU.', en: 'Standard operating procedures for the ICU room.', jv: 'Standar prosedur operasional Ruang ICU.' },
     icon: ShieldCheck,
   },

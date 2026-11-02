@@ -47,15 +47,15 @@ export interface EducationTopic {
 export type DocumentCategory =
   | 'pedoman-pelayanan'
   | 'pedoman-organisasi'
-  | 'sop-keperawatan'
-  | 'sop-ruang-icu'
+  | 'spo-keperawatan'
+  | 'spo-ruang-icu'
 
 export interface IcuDocument {
   id: string
   title: string
   category: DocumentCategory
   description: string
-  /** Public URL, e.g. /documents/sop-ruang-icu/sop-transfer-pasien.pdf */
+  /** Public URL, e.g. /documents/spo-ruang-icu/spo-transfer-pasien.pdf */
   filePath: string
   fileName: string
   /** Only true once the PDF actually exists under public/documents. */

@@ -23,6 +23,6 @@ npm run build    # hasil di dist/
 
 ## Menambah dokumen PDF (Berkas ICU)
 
-1. Simpan PDF ke folder kategori, misalnya `public/documents/sop-ruang-icu/sop-transfer-pasien.pdf`.
+1. Simpan PDF ke folder kategori, misalnya `public/documents/spo-ruang-icu/spo-transfer-pasien.pdf`.
 2. Tambahkan satu entri di `src/data/documents.ts` dengan `category` yang sama, `filePath` sesuai lokasi file, dan `available: true`.
 3. Dokumen langsung muncul di kategori tersebut dengan tombol Preview dan Download.

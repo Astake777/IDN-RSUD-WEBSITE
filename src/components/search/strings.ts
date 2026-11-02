@@ -13,9 +13,9 @@ export const searchStrings = {
   results: { id: 'Hasil pencarian', en: 'Search results', jv: 'Asil pados' },
   noResults: { id: 'Tidak ada hasil untuk', en: 'No results for', jv: 'Mboten wonten asil kangge' },
   hint: {
-    id: 'Coba kata lain, misalnya ventilator, visi, atau SOP.',
-    en: 'Try another word, for example ventilator, vision, or SOP.',
-    jv: 'Cobi tembung sanes, upaminipun ventilator, visi, utawi SOP.',
+    id: 'Coba kata lain, misalnya ventilator, visi, atau SPO.',
+    en: 'Try another word, for example ventilator, vision, or SPO.',
+    jv: 'Cobi tembung sanes, upaminipun ventilator, visi, utawi SPO.',
   },
   count: { id: '{n} hasil ditemukan', en: '{n} results found', jv: '{n} asil kapanggihaken' },
 } satisfies Record<string, Localized>
